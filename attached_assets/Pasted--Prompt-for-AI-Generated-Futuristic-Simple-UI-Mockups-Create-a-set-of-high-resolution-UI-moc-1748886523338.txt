@@ -1,0 +1,650 @@
+*Prompt for AI-Generated Futuristic & Simple UI Mockups*
+
+> *“Create a set of high-resolution UI mockups for a unified Tyre & Automotive Accessories website that combines every feature from both TyresOnline.ae and RamyAutomotive.com. The design should feel clean, futuristic, and simple—using a restrained color palette of pure black (#000000), crisp white (#FFFFFF), and electric blue (#1907FF) as accent. Employ a geometric, tech-inspired sans-serif for headings (e.g. “Orbitron” or “Audiowide”) and a humanist sans-serif for body text (e.g. “Roboto” or “Open Sans”). Use a 12-column grid layout on desktop, collapsing gracefully at tablet (≥768 px) and mobile (<768 px) breakpoints. All interactive elements (buttons, inputs, toggles) should have subtle blue (#1907FF) focus/hover states, minimal drop shadows (RGBA(0,0,0,0.1)), and rounded corners (8 px radius). Provide separate screen layouts or artboards for each feature below.*
+
+---
+
+### 1. Global Header & Footer
+
+* *Header (80 px tall, #000000 background):*
+
+  * Left: Logo (futuristic “FUTURE Tyre Trading” wordmark in white #FFFFFF)
+  * Center: Horizontal nav links in white (#FFFFFF) with hover underline in electric blue (#1907FF):
+
+    * Home | Tyres | Accessories | Blog | Reviews | About | Contact
+  * Right: “Login / Register” links (white #FFFFFF), and a cart icon (stroke #FFFFFF, fill on hover #1907FF) with a small badge.
+  * On mobile: Hamburger icon (#FFFFFF) opens full-screen white (#FFFFFF) menu with nav links in black (#000000).
+
+* *Footer (dark gray #333333 background):*
+
+  * Three columns of white (#FFFFFF) text:
+
+    1. Quick Links (Home, Tyres, Accessories, Blog, Reviews, About, Contact)
+    2. Contact Info (Address with map-pin icon, Phone with phone icon, Email with envelope icon, all in white text)
+    3. Newsletter Signup (input field #FFFFFF with #CCCCCC border; subscribe button #1907FF background, white text)
+  * Bottom strip (height 40 px, center aligned): “© 2025 Future Tyre Trading. All Rights Reserved.” in 12 px light gray (#CCCCCC).
+
+---
+
+### 2. Homepage
+
+1. *Hero Section (Full-Width):*
+
+   * *Background:* Split-image: left half—4×4 off-road tyre in desert, right half—sleek street tyre on asphalt, overlaid with a semi-transparent black gradient (opacity 60 %).
+   * *Headline (Centered):*
+
+     * “Find the Perfect Tyres & Accessories” — 36 px, white (#FFFFFF), Orbitron (or similar)
+     * “Shop by Size, Vehicle, or Browse Our Off-Road Catalog” — 18 px, white (#FFFFFF), Roboto
+   * *Primary Buttons (Beneath Headline):* side by side, each 8 px corner radius:
+
+     1. *Search Tyres* — #1907FF background, #FFFFFF text, 18 px Roboto, hover state: #1306CC background
+     2. *Shop Accessories* — #FFFFFF background, 2 px #1907FF border, #1907FF text, hover: #1907FF background/#FFFFFF text
+
+2. *Tyre Search Widget (Centered Below Hero):*
+
+   * *Container Card:* white (#FFFFFF) background, 24 px padding, 8 px radius, subtle shadow (RGBA(0,0,0,0.1)), max-width 900 px, centered.
+   * *Tab Toggle (Top Edge of Card):* two buttons side by side (each 50 % width):
+
+     * *By Size (Default Active):* #1907FF background, #FFFFFF text, 16 px Orbitron
+     * *By Vehicle (Inactive):* #F5F5F5 background, #333333 text, 16 px Orbitron
+   * *By Size Form:* (visible when “By Size” active)
+
+     * Single inline input (white #FFFFFF, 1 px #CCCCCC border, placeholder “e.g. 205/55 R16” in #CCCCCC, focus outline #1907FF) occupying 60 % width
+     * “Search” button (30 % width, #1907FF background, #FFFFFF text, 8 px radius)
+   * *By Vehicle Form:* (visible when “By Vehicle” active)
+
+     * Three dropdowns in a row (Make | Model | Year), each white (#FFFFFF) with 1 px #CCCCCC border, focus outline #1907FF
+     * “Search” button (same styling as above)
+   * *Note Underneath Form:* 12 px text in medium gray (#666666): “Free fitment across UAE. Delivery in 24 hours.”
+
+3. *Featured Categories (Below Search Widget):* three cards in a row (equal width, 280 px each):
+
+   1. *Tyres by Brand*: row of grayscale tyre-brand logos (Bridgestone, Goodyear, Michelin) centered above 16 px black (#000000) text
+   2. *Off-Road Accessories*: flat icons (bumper, LED light bar, lift-kit spring) in black (#000000) centered above 16 px black (#000000) text
+   3. *Mobile Fitment*: van-with-tyre icon in black (#000000), “Dubai Only” badge in #1907FF, and 16 px black text
+
+   * *Card Style:* white (#FFFFFF) background, 16 px padding, 8 px radius, shadow (RGBA(0,0,0,0.1)), hover: border 2 px #1907FF + slight upward shift (translateY(–4 px))
+
+4. *Knowledge Hub Preview (Below Categories):*
+
+   * *Section Title:* “From the Knowledge Hub” — 24 px black (#000000), Roboto Bold
+   * *Three Post Cards in a Row:* each card 300 px wide, white (#FFFFFF) background, 8 px radius, shadow. Card content:
+
+     * Featured Image (300 × 200 px, 8 px radius)
+     * Title (16 px black (#000000) Roboto Bold)
+     * Excerpt (14 px dark gray (#333333) Roboto Regular)
+     * “Read More” link (14 px #1907FF Roboto Bold)
+   * On hover: card border turns #1907FF, image slightly zooms (scale 1.05).
+
+5. *Testimonials Carousel (Bottom of Homepage):*
+
+   * *Background:* solid black (#000000), height 300 px
+   * *Text:* 18 px italic white (#FFFFFF) centered: e.g., “Great service—tyre fitment in 2 hours!”
+   * *Author Line:* 14 px white (#FFFFFF) below quote
+   * *Navigation Arrows:* left/right arrow icons in white (#FFFFFF) stroke; hover fills #1907FF
+
+---
+
+### 3.3. Tyres Page (“/tyres”)
+
+1. *Breadcrumb & Title (Top):*
+
+   * Breadcrumb text “Home / Tyres” — 12 px medium gray (#666666)
+   * Page Title “Shop Tyres” — 28 px black (#000000), Orbitron
+
+2. *Two-Column Layout:*
+
+   * *Left Sidebar (Filters, width \~250 px, fixed position on scroll):* white (#FFFFFF) background, 16 px padding, 8 px radius, shadow.
+
+     1. *Brand Filter:* list of checkbox items, each row 40 px tall with brand logo thumbnail (grayscale) on left, brand name in black (#000000). On hover/check, checkbox outline and checkmark in #1907FF.
+     2. *Price Range Slider:* track in medium gray (#CCCCCC), thumb in #1907FF, current range labels in 12 px black (#000000).
+     3. *Tyre Type Radio Buttons:* options “All-Season,” “Summer,” “Winter,” “SUV/4×4”; selected fill in #1907FF, labels in black (#000000).
+     4. *Width / Profile / Rim Dropdowns:* white (#FFFFFF) background, 1 px #CCCCCC border, focus outline #1907FF, black (#000000) text.
+     5. *Clear All Filters:* 12 px red (#D9534F) link at bottom.
+
+   * *Right Main Content (remainder of width):*
+
+     1. *Top Bar:*
+
+        * *Search Input (Left):* white (#FFFFFF) background, 1 px #CCCCCC border, placeholder “Search by size or keyword” in #CCCCCC, focus outline #1907FF.
+        * *Sort Dropdown (Right):* same styling, default text “Sort by: Price low→high.”
+
+     2. *Product Grid (Below Top Bar):*
+
+        * 4 columns on desktop (≥1024 px), 2 on tablet (≥768 px), 1 on mobile (<768 px).
+        * *Each Product Card:*
+
+          * *Background:* white (#FFFFFF), 8 px radius, shadow (RGBA(0,0,0,0.05)).
+          * *Image:* 200 × 200 px centered, circular highlight rim in #1907FF (2 px stroke) behind the tyre.
+          * *Name:* 16 px black (#000000), Orbitron Bold.
+          * *Price:* 14 px #1907FF, Roboto Bold.
+          * *Stock Badge (Below Price):*
+
+            * “In Stock” pill: green (#28A745) background, white (#FFFFFF) text, 6 px radius OR
+            * “Out of Stock” pill: red (#D9534F) background, white (#FFFFFF) text, 6 px radius
+          * *Add to Cart Button:* full-width beneath badge, 8 px radius, #1907FF background, white (#FFFFFF) text, hover: #1306CC background.
+
+     3. *Pagination (Below Grid):*
+
+        * Centered numeric links (1 2 3 … Next), default 14 px medium gray (#666666), current page in 14 px white (#FFFFFF) on #1907FF circle (24 × 24 px).
+
+---
+
+### 3.4. Accessories Page (“/accessories”)
+
+1. *Breadcrumb & Title* (“Home / Accessories” styled exactly like Tyres page)
+
+2. *Top Category Tabs (Scrollable horizontally):*
+
+   * Tabs on white (#FFFFFF) strip:
+
+     * *Active Tab:* bottom border 4 px #1907FF, text 16 px black (#000000) Orbitron
+     * *Inactive Tabs:* 16 px black (#000000) Orbitron, on hover background #F5F5F5
+
+   * Categories: “All Accessories” | “Bumpers” | “Lighting” | “Lift Kits” | “Roof Racks” | “Wheel Spacers” | etc.
+
+3. *Search & Filter Row (Below Tabs):*
+
+   * *Search Input:* white (#FFFFFF), 1 px #CCCCCC border, placeholder “Search accessories…” in #CCCCCC, focus outline #1907FF.
+   * *Price Slider:* track #CCCCCC, thumb #1907FF, labels “AED 100”–“AED 10,000.”
+   * *Brand Dropdown:* white (#FFFFFF), 1 px #CCCCCC border, focus outline #1907FF, black (#000000) text.
+   * *Clear Filters Link:* 12 px red (#D9534F).
+
+4. *Product Grid (3 columns on desktop ≥1024 px, 2 columns on tablet, 1 column on mobile):*
+
+   * *Each Accessory Card:* white (#FFFFFF) background, 8 px radius, shadow (RGBA(0,0,0,0.05)).
+
+     * *Image:* 200 × 200 px, object-fit cover, 8 px radius; on hover, image scale 1.05 + thin #1907FF border (2 px).
+     * *Name:* 16 px black (#000000), Orbitron Bold.
+     * *Specs (Below Name):* 12 px dark gray (#333333), Roboto Regular (e.g. “Material: CNC Aluminum,” “Fitment: Toyota Land Cruiser”).
+     * *Price:* 14 px #1907FF, Roboto Bold.
+     * *View Details Button:* 100 % width, 8 px radius, white (#FFFFFF) background, 2 px #1907FF border, #1907FF text; on hover, background #1907FF, text #FFFFFF.
+
+5. *“Load More” Button (Below Grid):*
+
+   * Centered, 20 px vertical/16 px horizontal padding, pill-shaped (20 px radius), #1907FF background, #FFFFFF text, hover #1306CC.
+
+---
+
+### 3.5. Product Details Page (“/product-detail”)
+
+1. *Breadcrumb & Title:* “Home / Accessories / Lighting / RockLights LED” — styled like other pages (12 px #666666 / 24 px #000000).
+
+2. *Two-Column Hero Section:*
+
+   * *Left (Image Gallery, 60 % width):*
+
+     * *Main Image:* 400 × 300 px, 8 px radius, thin #CCCCCC border; top-right “Zoom” icon (#FFFFFF on semi-transparent black circle). Hover: border #1907FF.
+     * *Thumbnail Row (Below Main Image):* 4 thumbnails (80 × 60 px each, 8 px radius, 1 px #CCCCCC border); active thumbnail border #1907FF.
+   * *Right (Details & Purchase, 40 % width):*
+
+     * *Product Title:* 24 px black (#000000), Orbitron Bold
+     * *Star Rating Row:* 5 small star icons—filled stars in #1907FF, empty stars in #CCCCCC; “(32 reviews)” in 14 px #1907FF Roboto.
+     * *Price:* 20 px #1907FF, Roboto Bold
+     * *Short Description:* 14 px dark gray (#333333), Roboto Regular
+     * *Fitment Options (Below Description):* three radio options with icons in black (#000000) outlines, selected fill #1907FF:
+
+       1. Partner Centre (map pin icon) – subtext 12 px #666666: “Select a fitment centre”
+       2. Home Delivery (truck icon) – subtext 12 px #666666: “AED 50 for delivery & installation”
+       3. Mobile Van (van icon) – subtext 12 px #666666: “AED 80 (Dubai only)”
+     * *Quantity Selector:* minus/plus icons (#000000) around white (#FFFFFF) input (1 px #CCCCCC border, 8 px radius, focus #1907FF), current value in black (#000000).
+     * *Add to Cart Button:* 100 % width, 8 px radius, orange (#FF7A00) background, white (#FFFFFF) text, hover #E36900
+     * *Buy Now Button:* below #Add to Cart, 100 % width, white (#FFFFFF) background, 2 px #1907FF border, #1907FF text, hover #1907FF background/#FFFFFF text
+
+3. *Tabbed Content Section (Below Two-Column):*
+
+   * *Tabs Row (White #FFFFFF background):*
+
+     * *Active Tab:* bottom border 4 px #1907FF, text 16 px black (#000000), Orbitron
+     * *Inactive Tabs:* text 16 px black (#000000), hover background #F5F5F5
+     * Tabs: “Description” | “Specifications” | “Reviews”
+
+   * *Description Pane (Default Active):*
+
+     * White (#FFFFFF) background card, 24 px padding, 8 px radius, shadow.
+     * Body text 16 px dark gray (#333333), 1.5 × line height.
+     * *H2* subheads 24 px black (#000000), *H3* sub-subheads 20 px black (#000000).
+     * *Blockquotes:* left border 4 px #1907FF, 16 px italic dark gray (#333333), background #F5F5F5, 16 px padding.
+     * *Inline Images:* 300 × 200 px, 8 px radius, 16 px margin.
+
+   * *Specifications Pane:*
+
+     * Two-column table: left column labels 14 px black (#000000), right column values 14 px dark gray (#333333), table borders 1 px #CCCCCC.
+
+   * *Reviews Pane:*
+
+     * List of user reviews stacked vertically: each review card is white (#FFFFFF), 16 px padding, 8 px radius, shadow.
+
+       * *Header:* avatar circle (40 × 40 px, placeholder color #CCCCCC), username 14 px bold black (#000000), date 12 px #666666, star icons (#1907FF/#CCCCCC).
+       * *Comment Text:* 14 px dark gray (#333333).
+       * *“Write a Review” Button:* blue (#1907FF) background, white (#FFFFFF) text, 6 px radius; on hover #1306CC.
+
+4. *“You May Also Like” Carousel (Bottom):*
+
+   * Horizontal scroll of 5–6 small product cards: each card 120 × 120 px image with 8 px radius, below 14 px black (#000000) name, 14 px #1907FF price.
+   * Arrows (#000000 stroke, on hover #1907FF fill) at left and right; infinite loop on desktop, swipeable on mobile.
+
+---
+
+### 3.6. Shopping Cart Page (“/cart”)
+
+1. *Breadcrumb & Title:* “Home / Cart” styled as before.
+
+2. *Cart Table Section (Full-Width, White #FFFFFF Background):*
+
+   * *Table Headers (Top Row):*
+
+     * 14 px bold black (#000000) text, bottom border 1 px #CCCCCC, uppercase small-caps style.
+     * Columns: Product Image | Name & Specs | Type | Price | Quantity | Subtotal | Remove
+
+   * *Table Rows (Alternating Backgrounds):*
+
+     * Even rows: white (#FFFFFF), odd rows: light gray (#F5F5F5)
+     * *Product Image Cell:* 60 × 60 px thumbnail, 6 px radius
+     * *Name & Specs Cell:*
+
+       * Name: 14 px black (#000000), Roboto Bold
+       * Specs (e.g., “205/55 R16” or “LED Lightbar 120 W”): 12 px #666666, Roboto Regular
+     * *Type Badge:* pill-shaped (6 px radius) with 12 px white (#FFFFFF) text on #1907FF background if “Tyre,” or #000000 background for “Accessory.”
+     * *Price Cell:* 14 px #1907FF, Roboto Bold
+     * *Quantity Cell:*
+
+       * White (#FFFFFF) input with 1 px #CCCCCC border, 6 px radius, focus outline #1907FF; plus/minus icons (#000000) on each side.
+     * *Subtotal Cell:* 14 px #1907FF, Roboto Bold (quantity × unit price)
+     * *Remove Cell:* small “×” icon in red (#D9534F), hover fill #A12A2A
+
+   * *Order Summary Sidebar (Right, \~30 % Width):*
+
+     * White (#FFFFFF) card, 16 px padding, 8 px radius, shadow
+
+       * *Subtotal:* label 14 px dark gray (#333333), value 14 px bold #1907FF
+       * *Fitment Fee:* label 14 px dark gray (#333333), value 14 px bold #1907FF (only if cart contains tyres)
+       * *Tax (5 % VAT):* label 14 px dark gray (#333333), value 14 px bold #1907FF
+       * *Total:* label 16 px bold black (#000000), value 16 px bold #1907FF
+       * *“Proceed to Checkout” Button:* full-width, 8 px radius, orange (#FF7A00) background, white (#FFFFFF) text, hover #E36900
+
+3. *Empty Cart State (If No Items):*
+
+   * Centered 18 px black (#000000) text: “Your cart is empty.”
+   * Below, *“Continue Shopping” Button:* white (#FFFFFF) background, 2 px #1907FF border, #1907FF text, 8 px radius, hover #1907FF background/#FFFFFF text
+
+---
+
+### 3.7. Checkout Page (“/checkout”)
+
+1. *Breadcrumb & Title:* “Home / Cart / Checkout” (12 px #666666 / 24 px #000000)
+
+2. *Two-Column Layout:*
+
+   * *Left Column (≈ 65 % Width) – Billing & Payment:*
+
+     1. *Billing Address Form Card:* white (#FFFFFF), 16 px padding, 8 px radius, shadow
+
+        * *Section Titles:* 16 px bold black (#000000) “Contact Information” and “Shipping Address”
+        * *Input Fields:* height 40 px, white (#FFFFFF) background, 1 px #CCCCCC border, 8 px radius, focus outline #1907FF, placeholder #CCCCCC
+        * *Field Labels:* 14 px dark gray (#333333) above inputs
+     2. *Payment Method Card (Below Billing Form):* white (#FFFFFF), 16 px padding, 8 px radius, shadow
+
+        * *Title:* 18 px bold black (#000000) “Payment”
+        * *Embedded Payment Fields (Stripe Elements style):* each field on white (#FFFFFF) background, 1 px #CCCCCC border, 8 px radius, focus outline #1907FF
+        * *Accepted Card Logos Row:* Visa, MasterCard, Amex icons in brand colors on #FFFFFF background
+     3. *“Place Order” Button:* full-width, 8 px radius, orange (#FF7A00) background, white (#FFFFFF) 16 px text, hover #E36900
+
+   * *Right Column (≈ 35 % Width) – Order Summary:*
+
+     * White (#FFFFFF) card, 16 px padding, 8 px radius, shadow
+
+       * *Heading:* 18 px bold black (#000000) “Your Order”
+       * *Item Lines:* each line: 14 px—thumbnail (40 × 40 px, 4 px radius) + product name in black (#000000) + “× Qty” in #666666 + price in #1907FF
+       * *Divider:* 1 px #CCCCCC
+       * *Subtotal:* 14 px dark gray (#333333) label / 14 px bold #1907FF value
+       * *Fitment Fee:* 14 px dark gray (#333333) label / 14 px bold #1907FF value (only if tyres in cart)
+       * *Tax:* 14 px dark gray (#333333) label / 14 px bold #1907FF value
+       * *Total:* 16 px bold black (#000000) label / 16 px bold #1907FF value
+       * *Terms Note:* 12 px medium gray (#666666) “By placing your order, you agree to our Terms & Privacy Policy.”
+
+3. *Responsive Behavior:*
+
+   * At ≤768 px: stack Order Summary above Billing & Payment. Inputs and buttons become full-width with 16 px vertical spacing.
+
+---
+
+### 3.8. Knowledge Hub / Blog (“/blog” & “/blog-post”)
+
+#### 3.8.1. Blog List Page (“/blog”)
+
+1. *Breadcrumb & Title:* “Home / Blog” (12 px #666666 / 28 px #000000)
+
+2. *Filters Row (White #FFFFFF Background, 16 px Padding):*
+
+   * *Category Dropdown:* white (#FFFFFF), 1 px #CCCCCC border, 8 px radius, focus outline #1907FF; default “All Categories.”
+   * *Search Input:* white (#FFFFFF), 1 px #CCCCCC border, 8 px radius, placeholder “Search articles…” (#CCCCCC), focus #1907FF.
+   * *Clear Filters Link:* 12 px red (#D9534F).
+
+3. *Post Grid (3 Columns Desktop, 2 Tablet, 1 Mobile):*
+
+   * *Each Post Card:* white (#FFFFFF) background, 8 px radius, shadow (RGBA(0,0,0,0.05)), 300 px wide:
+
+     * *Featured Image:* 300 × 180 px, 8 px radius
+     * *Title:* 16 px black (#000000), Orbitron Bold
+     * *Excerpt:* 14 px dark gray (#333333), Roboto Regular (limit to 2 lines with ellipsis)
+     * *Meta Line:* date & author in 12 px medium gray (#666666)
+     * *“Read More” Link:* 14 px #1907FF Roboto Bold
+
+4. *Pagination (Below Grid):*
+
+   * Centered numbers (1 2 3 … Next) in 14 px medium gray (#666666), current page in white (#FFFFFF) on #1907FF circle (24 × 24 px).
+
+#### 3.8.2. Single Post Page (“/blog-post?id=123”)
+
+1. *Breadcrumb & Title:* “Home / Blog / Why Desert Tyres Matter” (12 px #666666 / 36 px #FFFFFF overlaid on hero image)
+
+2. *Hero Section (Full-Width):*
+
+   * *Featured Image:* 800 × 400 px, full bleed, with semi-transparent black (#000000, 40 % opacity) overlay
+   * *Overlay Text:*
+
+     * *Post Title:* 36 px white (#FFFFFF), Orbitron Bold, centered vertically
+     * *Subtitle/Date:* 14 px white (#FFFFFF), Roboto Regular
+
+3. *Post Meta Row (Below Hero, on white #FFFFFF card strip):*
+
+   * Date (12 px medium gray #666666), author (12 px medium gray #666666), categories as blue (#1907FF) tag pills (12 px white text), share icons (Facebook/Twitter/LinkedIn in #1907FF with hover #1306CC).
+
+4. *Article Content Container (White #FFFFFF Card, 24 px Padding, 8 px Radius):*
+
+   * *Body Text:* 16 px dark gray (#333333), Roboto Regular, 1.5× line height
+   * *H2 Subheads:* 24 px black (#000000), Orbitron Bold
+   * *H3 Sub-subheads:* 20 px black (#000000), Orbitron Bold
+   * *Inline Images:* 300 × 200 px, 8 px radius, 16 px margin, centered or floated
+   * *Blockquotes:* left border 4 px #1907FF, 16 px italic dark gray (#333333), background #F5F5F5, 16 px padding
+
+5. *Sidebar (Desktop Only, 300 px Width):*
+
+   * *Search Widget:* same styling as other search inputs
+   * *Recent Posts List:* vertical list of 5 mini cards (80 × 60 px thumbnail, 14 px black (#000000) title)
+   * *Categories List:* vertical links (14 px #1907FF)
+   * *Popular Tags Cloud:* small pills (12 px white (#FFFFFF) text on #1907FF background)
+
+6. *Comments Section (Below Content):*
+
+   * *Heading:* “Comments” — 20 px black (#000000), Roboto Bold
+   * *Each Comment Card:* white (#FFFFFF), 16 px padding, 8 px radius, shadow:
+
+     * *Header:* avatar circle (40 × 40 px, placeholder #CCCCCC), username 14 px black (#000000), date 12 px #666666, star rating icons (#1907FF/#CCCCCC)
+     * *Comment Text:* 14 px dark gray (#333333)
+   * *“Leave a Comment” Form:*
+
+     * Inputs for Name, Email (white #FFFFFF, border #CCCCCC, 8 px radius, focus #1907FF)
+     * Textarea for Comment (same style, 4 rows)
+     * Submit Button (#1907FF background, #FFFFFF text, 8 px radius, hover #1306CC)
+
+---
+
+### 3.9. Reviews & Testimonials Page (“/reviews”)
+
+1. *Breadcrumb & Title:* “Home / Reviews” (12 px #666666 / 28 px #000000)
+
+2. *Average Rating Panel (White #FFFFFF Card, 64 px Tall, 16 px Padding):*
+
+   * *Numeric Rating:* “4.8” — 48 px bold #1907FF, Orbitron
+   * *Stars:* 5 small icons—filled stars in #1907FF, empty in #CCCCCC
+   * *Subtext:* “Based on 120 reviews” — 14 px dark gray (#333333)
+
+3. *Review Submission Form (Below Rating, White #FFFFFF Card, 16 px Padding, 8 px Radius):*
+
+   * *Fields:* Name (input), Email (input), Star Rating Selector (5 star icons in a row—hover/fill in #1907FF), Comment (textarea)
+   * Input/Footer Styling: all inputs white (#FFFFFF) with 1 px #CCCCCC border, 8 px radius, focus #1907FF
+   * *Submit Review Button:* full-width, 8 px radius, #1907FF background, #FFFFFF text, hover #1306CC
+
+4. *Reviews List (Below Form):*
+
+   * Two-column layout on desktop (each column \~45 % width), single column on mobile
+   * *Each Review Card:* white (#FFFFFF), 16 px padding, 8 px radius, shadow:
+
+     * *Header:* avatar circle (40 × 40 px, placeholder #CCCCCC if no image), username 16 px bold black (#000000), date 12 px #666666, star icons (#1907FF)
+     * *Comment:* 14 px dark gray (#333333)
+     * *“Was this helpful?”* 12 px #666666 with a small thumbs-up icon (#000000) that turns #1907FF on hover
+
+---
+
+### 3.10. Contact Page (“/contact”)
+
+1. *Breadcrumb & Title:* “Home / Contact Us” (12 px #666666 / 28 px #000000)
+
+2. *Split Layout:*
+
+   * *Left Column (60 % Width):*
+
+     * *Google Maps Embed:* responsive iframe (aspect ratio 16:9) with 8 px radius and 1 px #CCCCCC border
+   * *Right Column (40 % Width):*
+
+     1. *Contact Info Card:* white (#FFFFFF), 16 px padding, 8 px radius, shadow:
+
+        * *Address* (14 px black #000000) with map-pin icon in #1907FF
+        * *Phone* (14 px black #000000) with phone icon in #1907FF
+        * *Email* (14 px black #000000) with envelope icon in #1907FF
+        * *Business Hours* (12 px medium gray #666666)
+     2. *Inquiry Form (Below Contact Info Card):*
+
+        * Input fields for Name, Email, Subject (each white #FFFFFF background, 1 px #CCCCCC border, 8 px radius, focus #1907FF, 14 px label in #333333)
+        * Textarea for Message (same style, 4 rows)
+        * *Send Message Button:* 100 % width, 8 px radius, orange (#FF7A00) background, white (#FFFFFF) text, hover #E36900
+
+3. *Newsletter Signup (Footer Integration):*
+
+   * Light gray (#F5F5F5) strip, 16 px padding:
+
+     * *Text:* “Subscribe for Updates & Offers” — 16 px bold black (#000000)
+     * *Email Input:* white (#FFFFFF) background, 1 px #CCCCCC border, 8 px radius, focus #1907FF
+     * *Subscribe Button:* #1907FF background, white (#FFFFFF) text, 8 px radius, hover #1306CC
+
+---
+
+### 3.11. About / Our Story Page (“/about”)
+
+1. *Breadcrumb & Title:* “Home / About Us” (12 px #666666 / 28 px #000000)
+
+2. *Hero Section (Full-Width):*
+
+   * *Banner Image:* team or workshop, 800 × 400 px, full-bleed with semi-transparent black (#000000, 50 % opacity) overlay
+   * *Overlay Text:*
+
+     * “Our Story” — 36 px white (#FFFFFF) Orbitron Bold
+     * “Delivering Quality Tyres & Accessories Across the UAE” — 18 px white (#FFFFFF) Roboto Regular
+
+3. *Timeline Section (Vertical Center-Line on White #FFFFFF Background):*
+
+   * *Central Line:* 2 px solid black (#000000) vertically down center
+   * *Year Nodes:* circles (24 × 24 px, white #FFFFFF fill, 2 px #1907FF border), containing 24 px bold #1907FF text (e.g., “2020,” “2022,” “2024”)
+   * *Milestone Blocks (Alternating Left/Right of Line):*
+
+     * White (#FFFFFF) background card, 16 px padding, 8 px radius, shadow
+     * *Heading:* 18 px bold black (#000000)
+     * *Paragraph:* 14 px dark gray (#333333)
+     * *Thumbnail:* 120 × 80 px, 8 px radius, 1 px #CCCCCC border
+
+4. *Team Profiles (Below Timeline):*
+
+   * Grid of circular avatars (150 × 150 px) on white (#FFFFFF) background, each with an 8 px radius shadow
+   * *Avatar Border:* 4 px solid #1907FF, on hover border thickens to 6 px #1907FF
+   * *Name:* 16 px bold black (#000000), *Role:* 12 px medium gray (#666666) beneath avatar
+
+5. *Awards & Certificates (Below Team):*
+
+   * Horizontal row on white (#FFFFFF) strip of badge images (100 × 100 px each) with 4 px #1907FF border, 8 px radius, slight shadow
+
+6. *Our Locations Map (Bottom):*
+
+   * Stylized SVG or simplified vector map of UAE in light gray (#CCCCCC) on white (#FFFFFF) background
+   * Markers (small tyre + wrench icon) in #1907FF at each fitment centre location; on hover, show a white (#FFFFFF) tooltip with black (#000000) text (e.g., “Dubai – Main Showroom,” “Abu Dhabi Centre,” etc.)
+
+---
+
+### 3.12. Responsive & Mobile Guidelines
+
+1. *Global Breakpoints:*
+
+   * *Desktop (≥1024 px):* full 12-column grid; sidebars visible; multi-column layouts.
+   * *Tablet (≥768 px & <1024 px):* switch product grids to 2 columns, collapse sidebars into “Filters”/“Menu” buttons.
+   * *Mobile (<768 px):* single-column layout; header becomes hamburger menu; all cards and forms span 100 % width with 16 px side padding.
+
+2. *Navigation on Mobile:*
+
+   * Hamburger icon (#FFFFFF) opens a full-screen white (#FFFFFF) overlay: nav links in 24 px black (#000000), spaced 24 px vertically.
+   * Cart icon remains top-right; shopping-bag icon in #1907FF.
+
+3. *Buttons & Touch Targets:*
+
+   * Minimum tappable size 44 × 44 px; 16 px vertical/horizontal spacing between buttons.
+   * Inputs and buttons on mobile span full width of container, with 16 px top/bottom margin.
+
+4. *Typography Scaling:*
+
+   * Scale down body text from 16 px to 14 px on small phones; headings scale proportionally (H1 36 px→28 px, H2 24 px→20 px) to ensure readability.
+
+5. *Modals & Overlays (All Pages):*
+
+   * Full-screen overlay: semi-transparent black (#000000, 60 % opacity).
+   * *Modal Container:* white (#FFFFFF) background, 16 px padding, 8 px radius, width 90 % on mobile, centered vertically with 32 px top/bottom margin.
+   * *Close Icon:* top-right corner, 24 px black (#000000) “×”; hover color #1907FF.
+
+---
+
+## 4. Feature Checklist (All Features from Both Sites)
+
+1. *Tyre Search & Discovery*
+
+   * Search by exact tyre size (e.g., “205/55 R16”)
+   * Vehicle-lookup tyre search (dropdowns for make/model/year)
+   * Tyres by Brand catalog (Bridgestone, Goodyear, Michelin, etc.)
+   * Filters: price range slider, tyre type (All-Season, Summer, Winter, SUV/4×4), width/profile/rim dropdowns
+
+2. *Fitment & Installation Options*
+
+   * Partnered fitment-centre locator (map + list, filtered by emirate)
+   * Home/doorstep delivery (+ installation)
+   * Mobile fitment van service (Dubai only)
+
+3. *E-Commerce Flow*
+
+   * Product Grid & Cards (Tyres & Accessories) with image, name, price, stock badge, “Add to Cart” button
+   * Shopping Cart Page: table of cart items (image, name, type, price, qty, subtotal), edit qty, remove item
+   * Order Summary Sidebar (subtotal, fitment fee, tax, total), “Proceed to Checkout” button
+   * Checkout Page: billing address form, shipping address form, payment integration fields (Stripe or similar), order summary, “Place Order” button
+
+4. *Accessories Catalog*
+
+   * Off-road/custom accessories listing (lighting kits, bumpers, lift kits, roof racks, wheel spacers, etc.)
+   * Category tabs filter (All, Bumpers, Lighting, Lift Kits, etc.)
+   * Search & price filter & brand filter for accessories
+   * Individual product detail pages with image gallery, specs table, description, reviews, fitment options
+
+5. *Unified Content Hub (Blog & Advice)*
+
+   * Combined tyre-focused blog posts (TyresOnline) and off-road advice articles (Ramy Automotive) under “Knowledge Hub” or “Blog”
+   * Blog List: featured image, title, excerpt, date, author, “Read More” link; category filter & search & pagination
+   * Single Blog Post: hero image with overlay title, post meta (date/author/categories), article content (headings, paragraphs, images, blockquotes), sidebar with search, recent posts, categories, tags, comments section
+
+6. *User Reviews & Testimonials*
+
+   * Display average rating (numeric + stars) at top of Reviews page
+   * Review submission form (name, email, star rating selector, comment)
+   * Review list: avatar, username, date, star rating, comment, “Was this helpful?” interaction
+
+7. *Contact & Inquiry Forms*
+
+   * Single “Contact Us” page: embedded Google Map, address/phone/email with icons, business hours
+   * General inquiry form (name, email, subject, message, “Send Message” button)
+   * Newsletter signup field (email + “Subscribe” button) in footer
+
+8. *About / Our Story & Company Info*
+
+   * Company history timeline (vertical line, year nodes, milestone descriptions, images)
+   * Team profiles (circular avatars with blue (#1907FF) border, name, role)
+   * Awards & Certificates carousel or badge row (display logos with blue border)
+   * Locations map of UAE with markers for main showroom + all fitment centres (hover tooltips)
+
+9. *User Account Links (Login / Register)*
+
+   * “Login / Register” in header, linking to separate pages or modals (not fully detailed here, but placeholders present)
+
+10. *Additional Global Elements*
+
+    * *Breadcrumbs* on every page (“Home / Section / Subsection”) in 12 px medium gray (#666666)
+    * *Responsive Hamburger Menu* on mobile, full-screen overlay with nav links in 24 px black (#000000)
+    * *Modals & Overlays* for editing cart items, confirming deletion, or login/register (white #FFFFFF background, 8 px radius, black close “×”)
+    * *Notification Toasts* (bottom-center or top-right) with white (#FFFFFF) background, black (#000000) text, blue #1907FF border, for “Added to Cart,” “Review Submitted,” “Message Sent,” etc.
+
+---
+
+## 5. Visual & Interaction Guidelines
+
+1. *Futuristic Simplicity:*
+
+   * Overall feel: minimalistic, lots of whitespace, geometric shapes, subtle neon-blue accents (#1907FF) to evoke a high-tech automotive vibe.
+   * Icons: simple line icons (tyres, vehicles, wrenches, stars, maps) in black (#000000) or white (#FFFFFF) with occasional blue (#1907FF) fills on hover.
+
+2. *Consistent Spacing & Alignment:*
+
+   * Use multiples of 8 px for all padding/margin (8 px, 16 px, 24 px, 32 px).
+   * Align form labels above inputs, left-aligned text.
+   * Ensure each card has consistent 8 px radius and shadow (RGBA(0,0,0,0.05)).
+
+3. *Focus & Hover States:*
+
+   * *Buttons:* default blue (#1907FF) → hover darker (#1306CC); outline buttons (#1907FF border/#FFFFFF fill) → hover fill blue (#1907FF)/text white (#FFFFFF).
+   * *Inputs/Dropdowns:* focus outline in #1907FF.
+   * *Cards:* on hover, border turns #1907FF and slight lift (translateY(–4 px)).
+
+4. *Typography Hierarchy:*
+
+   * *Orbitron (or similar) for all headings/titles:* bold, crisp edges, spaced out letters to feel futuristic.
+   * *Roboto (or Open Sans) for all body text/form labels:* clean, easy to read.
+   * Maintain consistent line-heights: headings 1.2×, body text 1.5×.
+
+5. *Color Usage:*
+
+   * *Black (#000000):* primary text, header background, footer elements, icons.
+   * *White (#FFFFFF):* backgrounds for cards, forms, modals, hero overlays.
+   * *Electric Blue (#1907FF):* CTAs (buttons, active tabs, highlights, link hovers), icon accents, focus outlines, star ratings.
+   * *Light Gray (#F5F5F5) & Medium Gray (#CCCCCC):* background stripes, input borders, disabled states, subtext.
+   * *Red (#D9534F) & Green (#28A745):* minimal usage for “Clear Filters” link, “Out of Stock” badges (red), “In Stock” badges (green).
+
+---
+
+### *Deliverables for AI Generator*
+
+1. *Screen Artboards (Desktop & Mobile Versions):*
+
+   * Homepage (desktop hero + search widget + categories + blog preview + testimonials), plus simplified mobile view.
+   * Tyres Page (desktop two-column filters + grid; mobile single column).
+   * Accessories Page (desktop tabs + grid; mobile single column).
+   * Product Detail Page (desktop two-column; mobile stacked).
+   * Cart Page (desktop table + summary; mobile stacked).
+   * Checkout Page (desktop two-column; mobile stacked).
+   * Blog List Page (desktop grid + filters; mobile stacked).
+   * Single Blog Post (desktop with sidebar; mobile stacked).
+   * Reviews Page (desktop two-column; mobile stacked).
+   * Contact Page (desktop split map/form; mobile stacked).
+   * About Page (desktop timeline + profiles + map; mobile stacked).
+
+2. *Color Callouts:*
+
+   * Every element that uses black, white, or electric blue (#1907FF) should be explicitly rendered in those hex codes.
+   * Include subtle background uses of #F5F5F5 or #CCCCCC as described.
+
+3. *Typeface Guidance:*
+
+   * Headings in Orbitron (or similar futuristic sans-serif), body text in Roboto (or Open Sans), with the exact sizes and weights specified above.
+
+4. *Component States:*
+
+   * Show hover/focus states for buttons, inputs, cards, and hover effects for interactive elements.
+   * For mobile menu, show collapsed and expanded overlay versions.
+
+5. *Annotations (Optional):*
+
+   * If the AI supports callouts, annotate active tabs (#1907FF), hover states, and color codes.
+
+> *In summary, the AI should output a full set of cohesive, futuristic, yet simple UI mockups—covering *every single feature from TyresOnline.ae and RamyAutomotive.com—using only black (#000000), white (#FFFFFF), and electric blue (#1907FF) with minimal supporting grays. The result will be a fully integrated, visually consistent prototype ready for presentation.

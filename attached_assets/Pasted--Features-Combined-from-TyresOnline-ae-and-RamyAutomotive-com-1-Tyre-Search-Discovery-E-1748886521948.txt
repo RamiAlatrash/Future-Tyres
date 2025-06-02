@@ -1,0 +1,139 @@
+*Features Combined from TyresOnline.ae and RamyAutomotive.com*
+
+1. *Tyre Search & Discovery*
+
+   * Exact tyre‐size search (e.g. “205/55 R16” input field)
+   * Vehicle‐lookup tyre search (dropdowns for Make, Model, Year)
+   * “Tyres by Brand” browsing (list of tyre brands with thumbnails/logos)
+   * Tyre filtering (price range slider, tyre type selectors—All‐Season, Summer, Winter, SUV/4×4, etc.)
+   * Sorting options (e.g. Price low→high, Best Sellers, Newest)
+
+2. *Tyre Product Listings & Details*
+
+   * Grid/list of tyre cards showing image, name/specs, price, stock status badge (In Stock/Out of Stock)
+   * Pagination controls for tyre listings
+   * Individual tyre detail pages including:
+
+     * Image gallery (main image + thumbnails)
+     * Product title and key specifications (size, load index, speed rating)
+     * Price display
+     * Fitment options selector (Partner Centre, Home Delivery + Installation, Mobile Van)
+     * Quantity selector
+     * “Add to Cart” and “Buy Now” buttons
+     * Tabs for Description, Specifications table, Customer Reviews
+
+3. *Automotive Accessories Catalog & Details*
+
+   * Off‐road and custom accessories product grid (lighting kits, bumpers, lift kits, roof racks, wheel spacers, etc.)
+   * Category tabs or filters for Accessories (e.g. Bumpers, Lighting, Lift Kits, Roof Racks, All Accessories)
+   * Accessories search bar and price‐filter slider
+   * Individual accessory detail pages with:
+
+     * Image gallery (main + thumbnails)
+     * Product title and key specs (material, fitment compatibility, warranty)
+     * Price display
+     * Quantity selector
+     * “Add to Cart” and “View Details” buttons
+     * Tabs for Description, Specifications, Customer Reviews
+
+4. *Fitment Options & Locator*
+
+   * Map‐based locator for partnered fitment centres (select by emirate)
+   * List of fitment centre locations (name, address, contact)
+   * Home delivery + installation service option (with fixed fee note)
+   * Mobile van fitment (Dubai only) option
+
+5. *Shopping Cart & Checkout Workflow*
+
+   * Persistent shopping cart (list of items showing image, name, type \[Tyre or Accessory], unit price, quantity, subtotal, “Remove” action)
+   * Cart item quantity editing and “Remove” functionality
+   * Order Summary sidebar with Subtotal, Fitment Fee (if tyres present), Tax (e.g. VAT), Total
+   * “Proceed to Checkout” button
+   * Empty‐cart state with “Your cart is empty” message and “Continue Shopping” link/button
+   * Checkout page with:
+
+     * Billing Address form fields (Name, Email, Phone, Street, City, Emirate, Postal Code)
+     * Shipping Address form (if different)
+     * Payment integration fields (Stripe Elements or equivalent card input)
+     * Order Summary (list of items, pricing breakdown, total)
+     * “Place Order” button
+     * Order confirmation / success message after payment
+
+6. *Unified Blog / Knowledge Hub*
+
+   * Blog list page combining tyre‐focused guides (TyresOnline) and off‐road advice (Ramy):
+
+     * Featured image, title, excerpt, date, author for each post
+     * Category filter (Tyre Guides, Off‐Road Tips, Maintenance, etc.)
+     * Search bar for blog posts
+     * Pagination for older posts
+   * Single blog post layout:
+
+     * Hero image with overlaid title
+     * Post meta (date, author, category tags, share icons)
+     * Rich content area (headings, paragraphs, inline images, blockquotes)
+     * Sidebar (desktop) with Search widget, Recent Posts list, Categories list, Popular Tags cloud
+     * Comments section (list of existing comments + “Leave a Comment” submission form)
+
+7. *User Reviews & Testimonials*
+
+   * Reviews page showing:
+
+     * Average overall rating (numeric + star icons) with “Based on X reviews” text
+     * Submission form for new reviews (Name, Email, Star rating selector, Comment textarea, Submit button)
+     * List of existing reviews displayed in a grid/columns (avatar, username, star rating, date, comment text)
+     * “Was this review helpful?” interaction under each review
+
+8. *Contact & Inquiry Functionality*
+
+   * “Contact Us” page featuring:
+
+     * Embedded Google Map of company location
+     * Company address, phone number, email address displayed with icons
+     * Business hours text
+     * General inquiry form (fields: Name, Email, Subject, Message, “Send Message” button)
+   * Newsletter signup widget (email input + “Subscribe” button) in footer
+
+9. *About / “Our Story” & Company Information*
+
+   * About page with:
+
+     * Hero banner image + overlaid “Our Story” title and subtitle
+     * Vertical timeline of company milestones (year nodes + description + thumbnail images)
+     * Team profile section (circular avatars + name + role)
+     * Awards & certificates showcase (badge images/logos)
+     * “Our Locations” map of UAE with markers for each showroom/fitment centre (hover tooltips)
+
+10. *Account & Authentication Links (Placeholder)*
+
+    * “Login / Register” links in header (user authentication pages or modal placeholders)
+
+11. *Global Navigation & Utility Elements*
+
+    * Breadcrumb navigation on each page (e.g., “Home / Tyres” or “Home / Accessories / Lighting”)
+    * Responsive hamburger menu for mobile (collapsible overlay with nav links)
+    * Persistent header with Logo, Main nav links (Home, Tyres, Accessories, Blog, Reviews, About, Contact), Login/Register, and Cart icon
+    * Persistent footer with Quick Links, Contact Info, Newsletter Signup, and copyright notice
+
+12. *Search across Products & Blog*
+
+    * Site‐wide search input for tyres and accessories on product pages
+    * Search widget for filtering blog posts on blog pages
+
+13. *Responsive Design Requirements*
+
+    * 12-column grid on desktop (product grids: 4 columns for tyres, 3 for accessories, 3 for blog cards; review cards: 2 columns)
+    * Tablet layout: product grids collapse to 2 columns; sidebar filters collapse behind a “Filters” button
+    * Mobile layout: single-column stacking for all sections; hamburger menu navigation
+
+14. *Miscellaneous Features*
+
+    * Brand logos display in “Tyres by Brand” and “Accessories by Brand” sections
+    * “Mobile Fitment” badge/indicator (e.g., “Dubai Only”) on relevant service cards
+    * Placeholder for shipping and delivery information pop-ups or tooltips
+    * Placeholder for terms & privacy links in footer and during checkout
+    * Interactive elements (buttons, inputs, cards) should have hover/focus states (e.g., subtle elevation or border highlight)
+
+---
+
+*Use this list to ensure *every feature from both TyresOnline.ae and RamyAutomotive.com is included in a unified, futuristic, and simple interface mockup.**
