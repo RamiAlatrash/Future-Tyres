@@ -15,7 +15,7 @@
   --card-foreground: 0 0% 0%;
   --border: 0 0% 90%;
   --input: 0 0% 90%;
-  --primary: 239 100% 51%;
+  --primary: 0 84% 60%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 10%;
@@ -23,10 +23,10 @@
   --accent-foreground: 0 0% 10%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 239 100% 51%;
+  --ring: 0 84% 60%;
   --radius: 0.5rem;
-  --electric-blue: 239 100% 51%;
-  --electric-blue-dark: 236 100% 42%;
+  --electric-red: 0 84% 60%;
+  --electric-red-dark: 0 79% 50%;
   --future-black: 0 0% 0%;
   --pure-white: 0 0% 100%;
 }
@@ -78,7 +78,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--electric-blue));
+  background: hsl(var(--electric-red));
   border-radius: 4px;
 }
 
@@ -112,30 +112,51 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: hsl(var(--electric-blue));
+  background: hsl(var(--electric-red));
   border-radius: 50%;
   cursor: pointer;
 }
 
-/* Electric blue utility classes */
+/* Electric red utility classes */
+.text-electric-red {
+  color: hsl(var(--electric-red));
+}
+
+.bg-electric-red {
+  background-color: hsl(var(--electric-red));
+}
+
+.border-electric-red {
+  border-color: hsl(var(--electric-red));
+}
+
+.text-electric-red-dark {
+  color: hsl(var(--electric-red-dark));
+}
+
+.bg-electric-red-dark {
+  background-color: hsl(var(--electric-red-dark));
+}
+
+/* Legacy electric-blue classes for compatibility */
 .text-electric-blue {
-  color: hsl(var(--electric-blue));
+  color: hsl(var(--electric-red));
 }
 
 .bg-electric-blue {
-  background-color: hsl(var(--electric-blue));
+  background-color: hsl(var(--electric-red));
 }
 
 .border-electric-blue {
-  border-color: hsl(var(--electric-blue));
+  border-color: hsl(var(--electric-red));
 }
 
 .text-electric-blue-dark {
-  color: hsl(var(--electric-blue-dark));
+  color: hsl(var(--electric-red-dark));
 }
 
 .bg-electric-blue-dark {
-  background-color: hsl(var(--electric-blue-dark));
+  background-color: hsl(var(--electric-red-dark));
 }
 
 .text-future-black {
@@ -164,7 +185,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: absolute;
   top: 0;
   left: 2px;
-  color: hsl(var(--electric-blue));
+  color: hsl(var(--electric-red));
   z-index: -1;
   animation: glitch 0.3s ease-in-out;
 }
@@ -180,9 +201,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Accent color for checkboxes and radio buttons */
 input[type="checkbox"]:checked {
-  accent-color: hsl(var(--electric-blue));
+  accent-color: hsl(var(--electric-red));
 }
 
 input[type="radio"]:checked {
-  accent-color: hsl(var(--electric-blue));
+  accent-color: hsl(var(--electric-red));
 }
