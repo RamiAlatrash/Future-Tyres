@@ -1,7 +1,7 @@
 import { 
-  users, tyres, accessories, cartItems, blogPosts, reviews, contactMessages, newsletterSubscribers,
+  users, tyres, accessories, cartItems, reviews, contactMessages, newsletterSubscribers,
   type User, type InsertUser, type Tyre, type InsertTyre, type Accessory, type InsertAccessory,
-  type CartItem, type InsertCartItem, type BlogPost, type InsertBlogPost, type Review, type InsertReview,
+  type CartItem, type InsertCartItem, type Review, type InsertReview,
   type ContactMessage, type InsertContactMessage, type NewsletterSubscriber, type InsertNewsletterSubscriber
 } from "@shared/schema";
 
@@ -43,10 +43,7 @@ export interface IStorage {
   removeFromCart(id: number): Promise<boolean>;
   clearCart(sessionId: string): Promise<boolean>;
 
-  // Blog
-  getBlogPosts(): Promise<BlogPost[]>;
-  getBlogPost(slug: string): Promise<BlogPost | undefined>;
-  createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
+
 
   // Reviews
   getReviews(): Promise<Review[]>;
@@ -65,7 +62,7 @@ export class MemStorage implements IStorage {
   private tyres: Map<number, Tyre> = new Map();
   private accessories: Map<number, Accessory> = new Map();
   private cartItems: Map<number, CartItem> = new Map();
-  private blogPosts: Map<number, BlogPost> = new Map();
+
   private reviews: Map<number, Review> = new Map();
   private contactMessages: Map<number, ContactMessage> = new Map();
   private newsletterSubscribers: Map<number, NewsletterSubscriber> = new Map();
@@ -180,36 +177,7 @@ export class MemStorage implements IStorage {
       this.accessories.set(id, { ...accessory, id });
     });
 
-    // Seed blog posts
-    const blogSeedData: Omit<BlogPost, 'id' | 'publishedAt'>[] = [
-      {
-        title: "Essential Tyre Maintenance Tips for UAE Climate",
-        slug: "tyre-maintenance-uae-climate",
-        excerpt: "Learn how to extend your tyre life in extreme heat conditions with proper maintenance techniques...",
-        content: "The UAE's extreme climate poses unique challenges for tyre maintenance...",
-        author: "Ahmed Al-Rashid",
-        category: "Tyre Guides",
-        featuredImage: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
-      },
-      {
-        title: "Off-Road Adventures: Preparing Your Vehicle for Desert Driving",
-        slug: "desert-driving-preparation",
-        excerpt: "Complete guide to desert driving preparation, from tyre pressure to emergency equipment...",
-        content: "Desert driving requires careful preparation and the right equipment...",
-        author: "Sarah Johnson",
-        category: "Off-Road Tips",
-        featuredImage: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
-      }
-    ];
 
-    blogSeedData.forEach(post => {
-      const id = this.currentId++;
-      this.blogPosts.set(id, { 
-        ...post, 
-        id, 
-        publishedAt: new Date()
-      });
-    });
   }
 
   // User methods
@@ -362,21 +330,7 @@ export class MemStorage implements IStorage {
     return true;
   }
 
-  // Blog methods
-  async getBlogPosts(): Promise<BlogPost[]> {
-    return Array.from(this.blogPosts.values());
-  }
 
-  async getBlogPost(slug: string): Promise<BlogPost | undefined> {
-    return Array.from(this.blogPosts.values()).find(post => post.slug === slug);
-  }
-
-  async createBlogPost(insertPost: InsertBlogPost): Promise<BlogPost> {
-    const id = this.currentId++;
-    const post: BlogPost = { ...insertPost, id, publishedAt: new Date() };
-    this.blogPosts.set(id, post);
-    return post;
-  }
 
   // Review methods
   async getReviews(): Promise<Review[]> {
