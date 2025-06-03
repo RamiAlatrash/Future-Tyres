@@ -47,17 +47,7 @@ export const cartItems = pgTable("cart_items", {
   fitmentOption: text("fitment_option"), // 'partner', 'home', 'mobile'
 });
 
-export const blogPosts = pgTable("blog_posts", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  slug: text("slug").notNull().unique(),
-  excerpt: text("excerpt"),
-  content: text("content").notNull(),
-  author: text("author").notNull(),
-  category: text("category").notNull(), // Tyre Guides, Off-Road Tips, Maintenance
-  featuredImage: text("featured_image"),
-  publishedAt: timestamp("published_at").defaultNow(),
-});
+
 
 export const reviews = pgTable("reviews", {
   id: serial("id").primaryKey(),
@@ -93,7 +83,7 @@ export const insertUserSchema = createInsertSchema(users).omit({ id: true });
 export const insertTyreSchema = createInsertSchema(tyres).omit({ id: true });
 export const insertAccessorySchema = createInsertSchema(accessories).omit({ id: true });
 export const insertCartItemSchema = createInsertSchema(cartItems).omit({ id: true });
-export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({ id: true, publishedAt: true });
+
 export const insertReviewSchema = createInsertSchema(reviews).omit({ id: true, createdAt: true, isApproved: true });
 export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({ id: true, createdAt: true, isRead: true });
 export const insertNewsletterSubscriberSchema = createInsertSchema(newsletterSubscribers).omit({ id: true, subscribedAt: true });
@@ -107,8 +97,7 @@ export type Accessory = typeof accessories.$inferSelect;
 export type InsertAccessory = z.infer<typeof insertAccessorySchema>;
 export type CartItem = typeof cartItems.$inferSelect;
 export type InsertCartItem = z.infer<typeof insertCartItemSchema>;
-export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
+
 export type Review = typeof reviews.$inferSelect;
 export type InsertReview = z.infer<typeof insertReviewSchema>;
 export type ContactMessage = typeof contactMessages.$inferSelect;
