@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Orders</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html" class="active">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.html">
+                    <i class='bx bx-coin-stack'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class='bx bx-file'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <!-- Top Bar -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Orders</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search orders...">
+                <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <!-- Orders Content -->
+        <div class="home-content">
+            <div class="orders-container box">
+                <div class="title">All Orders</div>
+                <div class="order-status-bar">
+                    <button class="status-btn active" data-status="all">All</button>
+                    <button class="status-btn" data-status="pending">Pending</button>
+                    <button class="status-btn" data-status="processing">Processing</button>
+                    <button class="status-btn" data-status="shipped">Shipped</button>
+                    <button class="status-btn" data-status="delivered">Delivered</button>
+                    <button class="status-btn" data-status="cancelled">Cancelled</button>
+                </div>
+                <div class="table-responsive-wrapper">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th>Tracking #</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="shipped">
+                                <td><a href="order-details.html?orderId=#1035" class="order-link">#1035</a></td>
+                                <td>David Miller</td>
+                                <td><span class="status shipped">Shipped</span></td>
+                                <td>3</td>
+                                <td>$450.00</td>
+                                <td>2023-10-27</td>
+                                <td><a href="#">TRK12345678</a></td>
+                            </tr>
+                            <tr data-status="delivered">
+                                <td><a href="order-details.html?orderId=#1034" class="order-link">#1034</a></td>
+                                <td>John Doe</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                                <td>2</td>
+                                <td>$350.00</td>
+                                <td>2023-10-27</td>
+                                <td><a href="#">TRK12345679</a></td>
+                            </tr>
+                            <tr data-status="pending">
+                                <td><a href="order-details.html?orderId=#1033" class="order-link">#1033</a></td>
+                                <td>Jane Smith</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>5</td>
+                                <td>$750.00</td>
+                                <td>2023-10-26</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr data-status="processing">
+                                <td><a href="order-details.html?orderId=#1032" class="order-link">#1032</a></td>
+                                <td>Sam Wilson</td>
+                                <td><span class="status processing">Processing</span></td>
+                                <td>1</td>
+                                <td>$150.00</td>
+                                <td>2023-10-26</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr data-status="cancelled">
+                                <td><a href="order-details.html?orderId=#1031" class="order-link">#1031</a></td>
+                                <td>Alex Johnson</td>
+                                <td><span class="status cancelled">Cancelled</span></td>
+                                <td>4</td>
+                                <td>$600.00</td>
+                                <td>2023-10-25</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 

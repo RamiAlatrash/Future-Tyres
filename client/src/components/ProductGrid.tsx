@@ -1,23 +1,22 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import ProductCard from "@/components/ProductCard";
-import { Tyre, Accessory } from "@shared/schema";
+import { Accessory, Tyre } from "@shared/schema";
 
 interface ProductGridProps {
   products: (Tyre | Accessory)[];
   isLoading: boolean;
-  type: "tyre" | "accessory";
+  type: "tyre" | "accessory" | "search";
+  getProductType?: (product: Tyre | Accessory) => "tyre" | "accessory";
 }
 
-export default function ProductGrid({ products, isLoading, type }: ProductGridProps) {
+export default function ProductGrid({ products, isLoading, type, getProductType }: ProductGridProps) {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="space-y-4">
-            <Skeleton className="h-48 w-full rounded-lg" />
-            <Skeleton className="h-4 w-3/4" />
-            <Skeleton className="h-4 w-1/2" />
-            <Skeleton className="h-8 w-full" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3].map((key) => (
+          <div key={key} className="animate-pulse">
+            <div className="bg-gray-200 h-64 rounded-lg mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
           </div>
         ))}
       </div>
@@ -39,13 +38,18 @@ export default function ProductGrid({ products, isLoading, type }: ProductGridPr
 
   return (
     <div className={`grid ${gridCols} gap-6 mb-8`}>
-      {products.map((product) => (
-        <ProductCard 
-          key={product.id} 
-          product={product} 
-          type={type}
-        />
-      ))}
+      {products.map((product, index) => {
+        const productType = type === 'search' && getProductType ? getProductType(product) : type;
+        if (productType === 'search') return null; // Should not happen with the logic above
+        return (
+          <div key={index} className="flex flex-col">
+            <ProductCard
+              product={product}
+              type={productType}
+            />
+          </div>
+        )
+      })}
     </div>
   );
 }

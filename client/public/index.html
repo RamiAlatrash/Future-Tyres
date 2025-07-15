@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html" class="active">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.html">
+                    <i class='bx bx-coin-stack'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class='bx bx-file'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <!-- Top Bar -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Dashboard</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <div class="home-content">
+            <!-- Summary Cards -->
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Revenue</div>
+                        <div class="number">$547,890.00</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Orders</div>
+                        <div class="number">1,034</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Avg. Order Value</div>
+                        <div class="number">$529.78</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Low Stock Items</div>
+                        <div class="number">4</div>
+                        <div class="indicator">
+                            <i class='bx bx-down-arrow-alt down'></i>
+                            <span class="text">Down from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sales-boxes">
+                <!-- Sales Overview Chart -->
+                <div class="recent-sales box">
+                    <div class="title">Sales Overview</div>
+                    <div class="sales-details">
+                       <p>Daily revenue and order trends for the last 14 days</p>
+                       <div class="chart-container">
+                            <canvas id="salesOverviewChart"></canvas>
+                       </div>
+                    </div>
+                </div>
+                <!-- Top Selling Products -->
+                <div class="top-sales box">
+                    <div class="title">Top Selling Products</div>
+                    <ul class="top-sales-details">
+                        <li>
+                            <a href="#">
+                                <span class="product">Michelin Primacy 4</span>
+                            </a>
+                            <span class="price">$2400</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="product">Goodyear Eagle F1</span>
+                            </a>
+                            <span class="price">$2100</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="product">Bridgestone Turanza</span>
+                            </a>
+                            <span class="price">$1800</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="product">Pirelli P Zero</span>
+                            </a>
+                            <span class="price">$1500</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="product">Continental SportContact</span>
+                            </a>
+                            <span class="price">$1200</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <div class="charts-boxes">
+                <div class="order-status box">
+                    <div class="title">Order Status Overview</div>
+                    <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
+                        <canvas id="orderStatusChart"></canvas>
+                    </div>
+                </div>
+                <div class="today-summary box">
+                    <div class="title">Today's Summary</div>
+                    <ul>
+                        <li>
+                            <span>Orders Today</span>
+                            <span>25</span>
+                        </li>
+                        <li>
+                            <span>Revenue Today</span>
+                            <span>$12,345</span>
+                        </li>
+                        <li>
+                            <span>New Customers</span>
+                            <span>8</span>
+                        </li>
+                         <li>
+                            <span>Units Sold</span>
+                            <span>50</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="customer-boxes">
+                <div class="new-customers box">
+                     <div class="title">New Customer Sign-ups</div>
+                     <div class="table-responsive-wrapper">
+                         <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date Joined</th>
+                                    <th>First Order Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john.doe@example.com</td>
+                                    <td>2023-10-27</td>
+                                    <td>$350</td>
+                                </tr>
+                                 <tr>
+                                    <td>Jane Smith</td>
+                                    <td>jane.smith@example.com</td>
+                                    <td>2023-10-26</td>
+                                    <td>$500</td>
+                                </tr>
+                                 <tr>
+                                    <td>Sam Wilson</td>
+                                    <td>sam.wilson@example.com</td>
+                                    <td>2023-10-26</td>
+                                    <td>$150</td>
+                                </tr>
+                            </tbody>
+                         </table>
+                     </div>
+                </div>
+                <div class="top-buyers box">
+                    <div class="title">Top Buyers</div>
+                     <ul>
+                        <li>
+                            <span>Alex Johnson <span class="tag vip">VIP</span></span>
+                            <span>15 orders</span>
+                            <span>$5,500</span>
+                        </li>
+                         <li>
+                            <span>Maria Garcia <span class="tag premium">Premium</span></span>
+                            <span>12 orders</span>
+                            <span>$4,200</span>
+                        </li>
+                         <li>
+                            <span>Robert Brown</span>
+                            <span>10 orders</span>
+                            <span>$3,100</span>
+                        </li>
+                     </ul>
+                </div>
+            </div>
+             <div class="activity-box box">
+                <div class="title">Recent Activity</div>
+                 <ul>
+                    <li><i class='bx bx-cart'></i> New order #1035 placed by David Miller.</li>
+                    <li><i class='bx bx-error'></i> Low stock alert for Michelin Primacy 4.</li>
+                    <li><i class='bx bx-package'></i> Stock replenishment for Goodyear Eagle F1.</li>
+                    <li><i class='bx bx-user-plus'></i> New customer registered: Emily White.</li>
+                    <li><i class='bx bx-trending-up'></i> Daily sales milestone: $10,000 reached.</li>
+                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

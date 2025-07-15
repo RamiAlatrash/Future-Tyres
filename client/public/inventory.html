@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Inventory</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.html" class="active">
+                    <i class='bx bx-coin-stack'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class='bx bx-file'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <!-- Top Bar -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Inventory</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search inventory...">
+                <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <!-- Inventory Content -->
+        <div class="home-content">
+            <!-- Summary Cards -->
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Products</div>
+                        <div class="number">256</div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Units</div>
+                        <div class="number">15,678</div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Inventory Value</div>
+                        <div class="number">$1,250,340</div>
+                    </div>
+                </div>
+                <div class="box">
+                     <div class="right-side">
+                        <div class="box-topic">Low Stock Alerts</div>
+                        <div class="number">4</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventory-container">
+                <div class="low-stock-alert box">
+                    <div class="title">Low Stock Alerts</div>
+                    <ul>
+                        <li><span class="alert-product">Bridgestone Turanza (20 units)</span><span class="alert-status critical">Critical</span></li>
+                        <li><span class="alert-product">Pirelli P Zero (35 units)</span><span class="alert-status low">Low</span></li>
+                        <li><span class="alert-product">Continental SportContact (40 units)</span><span class="alert-status low">Low</span></li>
+                        <li><span class="alert-product">Dunlop SP Sport Maxx (45 units)</span><span class="alert-status low">Low</span></li>
+                    </ul>
+                </div>
+                <div class="inventory-table-container box">
+                     <div class="title" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>Inventory Details</span>
+                        <select id="locationFilter" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+                            <option value="all">All Locations</option>
+                            <option value="Al Quoz">Al Quoz</option>
+                            <option value="Deira">Deira</option>
+                            <option value="Sharjah">Sharjah</option>
+                        </select>
+                    </div>
+                     <div class="table-responsive-wrapper">
+                         <table class="inventory-table">
+                             <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Brand</th>
+                                    <th>Size</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Stock Level</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr>
+                                    <td>Michelin Primacy 4</td>
+                                    <td>Michelin</td>
+                                    <td>205/55 R16</td>
+                                    <td>Summer</td>
+                                    <td>Al Quoz</td>
+                                    <td>150</td>
+                                    <td>$150.00</td>
+                                    <td><span class="inventory-status in-stock">In Stock</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>Goodyear Eagle F1</td>
+                                    <td>Goodyear</td>
+                                    <td>225/45 R17</td>
+                                    <td>Summer</td>
+                                    <td>Deira</td>
+                                    <td>80</td>
+                                    <td>$180.00</td>
+                                    <td><span class="inventory-status in-stock">In Stock</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>Bridgestone Turanza</td>
+                                    <td>Bridgestone</td>
+                                    <td>195/65 R15</td>
+                                    <td>All-Season</td>
+                                    <td>Sharjah</td>
+                                    <td>20</td>
+                                    <td>$120.00</td>
+                                    <td><span class="inventory-status low-stock">Low Stock</span></td>
+                                </tr>
+                                 <tr>
+                                    <td>Pirelli P Zero</td>
+                                    <td>Pirelli</td>
+                                    <td>245/40 R18</td>
+                                    <td>Summer</td>
+                                    <td>Al Quoz</td>
+                                    <td>35</td>
+                                    <td>$220.00</td>
+                                     <td><span class="inventory-status low-stock">Low Stock</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hankook Ventus V12</td>
+                                    <td>Hankook</td>
+                                    <td>235/35 R19</td>
+                                    <td>Summer</td>
+                                    <td>Deira</td>
+                                    <td>0</td>
+                                    <td>$190.00</td>
+                                     <td><span class="inventory-status out-of-stock">Out of Stock</span></td>
+                                </tr>
+                             </tbody>
+                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 

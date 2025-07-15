@@ -15,18 +15,18 @@
   --card-foreground: 0 0% 0%;
   --border: 0 0% 90%;
   --input: 0 0% 90%;
-  --primary: 0 84% 60%;
+  --primary: 201 100% 35%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 10%;
   --accent: 0 0% 96%;
   --accent-foreground: 0 0% 10%;
-  --destructive: 0 84% 60%;
+  --destructive: 201 100% 35%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 0 84% 60%;
+  --ring: 201 100% 35%;
   --radius: 0.5rem;
-  --electric-red: 0 84% 60%;
-  --electric-red-dark: 0 79% 50%;
+  --electric-red: 201 100% 35%;
+  --electric-red-dark: 201 100% 25%;
   --future-black: 0 0% 0%;
   --pure-white: 0 0% 100%;
 }
@@ -42,13 +42,13 @@
   --card-foreground: 0 0% 98%;
   --border: 0 0% 16%;
   --input: 0 0% 16%;
-  --primary: 239 100% 51%;
+  --primary: 201 100% 35%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 16%;
   --secondary-foreground: 0 0% 98%;
   --accent: 0 0% 16%;
   --accent-foreground: 0 0% 98%;
-  --destructive: 0 63% 31%;
+  --destructive: 201 100% 35%;
   --destructive-foreground: 0 0% 98%;
   --ring: 0 0% 84%;
 }
@@ -78,7 +78,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--electric-red));
+  background: hsl(var(--primary));
   border-radius: 4px;
 }
 
@@ -112,51 +112,113 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: hsl(var(--electric-red));
+  background: hsl(var(--primary));
   border-radius: 50%;
   cursor: pointer;
 }
 
-/* Electric red utility classes */
-.text-electric-red {
-  color: hsl(var(--electric-red));
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: hsl(var(--primary));
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.bg-electric-red {
-  background-color: hsl(var(--electric-red));
+input[type="range"]::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: hsl(var(--primary));
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.border-electric-red {
-  border-color: hsl(var(--electric-red));
+/* Slider component specific styles */
+.slider-root {
+  position: relative;
+  display: flex;
+  touch-action: none;
+  user-select: none;
+  width: 100%;
+  height: 20px;
 }
 
-.text-electric-red-dark {
-  color: hsl(var(--electric-red-dark));
+.slider-track {
+  position: relative;
+  flex-grow: 1;
+  height: 4px;
+  background: hsl(var(--muted));
+  border-radius: 2px;
 }
 
-.bg-electric-red-dark {
-  background-color: hsl(var(--electric-red-dark));
+.slider-range {
+  position: absolute;
+  height: 100%;
+  background: hsl(var(--primary));
 }
 
-/* Legacy electric-blue classes for compatibility */
+.slider-thumb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: hsl(var(--primary));
+  border: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.slider-thumb:hover {
+  background: hsl(var(--background));
+}
+
+.slider-thumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary));
+}
+
+/* Electric blue utility classes */
 .text-electric-blue {
-  color: hsl(var(--electric-red));
+  color: hsl(var(--primary));
 }
 
 .bg-electric-blue {
-  background-color: hsl(var(--electric-red));
+  background-color: hsl(var(--primary));
 }
 
 .border-electric-blue {
-  border-color: hsl(var(--electric-red));
+  border-color: hsl(var(--primary));
 }
 
 .text-electric-blue-dark {
-  color: hsl(var(--electric-red-dark));
+  color: hsl(var(--primary-dark));
 }
 
 .bg-electric-blue-dark {
-  background-color: hsl(var(--electric-red-dark));
+  background-color: hsl(var(--primary-dark));
+}
+
+/* Legacy electric-red classes for compatibility */
+.text-electric-red {
+  color: hsl(var(--primary));
+}
+
+.bg-electric-red {
+  background-color: hsl(var(--primary));
+}
+
+.border-electric-red {
+  border-color: hsl(var(--primary));
+}
+
+.text-electric-red-dark {
+  color: hsl(var(--primary-dark));
+}
+
+.bg-electric-red-dark {
+  background-color: hsl(var(--primary-dark));
 }
 
 .text-future-black {
@@ -185,7 +247,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: absolute;
   top: 0;
   left: 2px;
-  color: hsl(var(--electric-red));
+  color: hsl(var(--primary));
   z-index: -1;
   animation: glitch 0.3s ease-in-out;
 }
@@ -201,9 +263,129 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Accent color for checkboxes and radio buttons */
 input[type="checkbox"]:checked {
-  accent-color: hsl(var(--electric-red));
+  accent-color: hsl(var(--primary));
 }
 
 input[type="radio"]:checked {
-  accent-color: hsl(var(--electric-red));
+  accent-color: hsl(var(--primary));
+}
+
+/* Product image gallery */
+.aspect-w-1 {
+  position: relative;
+  padding-bottom: 100%;
+}
+
+.aspect-h-1 {
+  position: relative;
+  height: 0;
+}
+
+.aspect-w-1 > *, .aspect-h-1 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Product page specific styles */
+.product-image {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.product-image:hover {
+  @apply opacity-90;
+}
+
+.fitment-option {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.fitment-option:hover {
+  @apply border-blue-400 bg-blue-50;
+}
+
+/* Quantity input styles */
+input[type="number"].quantity-input {
+  -moz-appearance: textfield;
+}
+
+input[type="number"].quantity-input::-webkit-outer-spin-button,
+input[type="number"].quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide scrollbars for smooth scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Elite Brand Grid Animations */
+@keyframes elitePulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.1);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+  }
+}
+
+@keyframes brandHover {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-5px) scale(1.1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 0px rgba(220, 38, 38, 0);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.4), 0 0 60px rgba(220, 38, 38, 0.2);
+  }
+}
+
+/* Racing Line Animation */
+@keyframes racingLine {
+  0% { 
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(0.5);
+    opacity: 1;
+  }
+  100% { 
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Corner Accent Animation */
+@keyframes cornerAccent {
+  0% { 
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Background Pattern Animation */
+@keyframes backgroundShift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -10px) rotate(1deg); }
+  66% { transform: translate(-10px, 10px) rotate(-1deg); }
 }

@@ -1,16 +1,19 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/hooks/useCart";
-import { Tyre, Accessory } from "@shared/schema";
+import { cn } from "@/lib/utils";
+import { Accessory, Tyre } from "@shared/schema";
+import { Link } from "wouter";
 
 interface ProductCardProps {
   product: Tyre | Accessory;
   type: "tyre" | "accessory";
+  onProductClick?: () => void;
+  layout?: 'default' | 'uniform';
 }
 
-export default function ProductCard({ product, type }: ProductCardProps) {
+export default function ProductCard({ product, type, onProductClick, layout = 'default' }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
@@ -18,86 +21,244 @@ export default function ProductCard({ product, type }: ProductCardProps) {
   };
 
   const isOutOfStock = product.stock === 0;
+  const isTyre = type === "tyre" && 'size' in product;
+  
+  // Enhanced discount detection for both tyres and accessories
+  const getDiscountInfo = () => {
+    if (isTyre) {
+      const tyre = product as Tyre;
+      // Check for Continental brand (automatic 25% discount)
+      if (tyre.brand === "Continental") {
+        const originalPrice = Math.round(tyre.price / 0.75); // Reverse calculate original price
+        return {
+          hasDiscount: true,
+          originalPrice,
+          discountPercent: 25,
+          currentPrice: tyre.price
+        };
+      }
+      // Check for promotion field
+      if (tyre.promotion && tyre.promotion !== "") {
+        const discountPercent = tyre.promotion === "20% Off" ? 20 : 15;
+        const originalPrice = Math.round(tyre.price / (1 - discountPercent / 100));
+        return {
+          hasDiscount: true,
+          originalPrice,
+          discountPercent,
+          currentPrice: tyre.price
+        };
+      }
+      // Check for explicit originalPrice field
+      if ('originalPrice' in tyre && tyre.originalPrice) {
+        const discountPercent = Math.round(((tyre.originalPrice - tyre.price) / tyre.originalPrice) * 100);
+        return {
+          hasDiscount: true,
+          originalPrice: tyre.originalPrice,
+          discountPercent,
+          currentPrice: tyre.price
+        };
+      }
+    } else {
+      // Handle accessories
+      const accessory = product as Accessory;
+      if ('discount' in accessory && accessory.discount && accessory.discount > 0) {
+        const originalPrice = 'originalPrice' in accessory && accessory.originalPrice 
+          ? accessory.originalPrice 
+          : Math.round(accessory.price / (1 - accessory.discount / 100));
+        return {
+          hasDiscount: true,
+          originalPrice,
+          discountPercent: accessory.discount,
+          currentPrice: accessory.price
+        };
+      }
+    }
+    
+    return { hasDiscount: false, originalPrice: 0, discountPercent: 0, currentPrice: product.price };
+  };
+
+  const discountInfo = getDiscountInfo();
+  const isUniformLayout = layout === 'uniform';
 
   return (
-    <Card className="product-card overflow-hidden">
-      <CardContent className="p-6 text-center">
-        {/* Product Image */}
-        <div className="relative mb-4">
+    <Card className={cn(
+      "product-card overflow-hidden hover:shadow-lg transition-shadow",
+      isUniformLayout && "flex flex-col h-full"
+    )}>
+      <CardContent className={cn("p-3", isUniformLayout && "flex flex-col flex-grow")}>
+        <div className={cn(isUniformLayout && "flex-grow flex flex-col")}>
           {type === "tyre" ? (
-            <div className="w-32 h-32 mx-auto rounded-full border-2 border-electric-blue p-2">
-              <img 
-                src={product.imageUrl || "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"}
-                alt={product.name}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
+            (() => {
+              const tyreContent = (
+                <>
+                  {/* Product Image for Tyre */}
+                  <div className="relative h-40 flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-white group-hover:border-electric-blue transition-colors mb-2">
+                    <img 
+                      src={product.imageUrl || "/tyre-placeholder.jpg"}
+                      alt={product.name}
+                      className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                    {/* Discount Badge */}
+                    {discountInfo.hasDiscount && (
+                      <div className="absolute top-1 right-1 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs font-semibold">
+                        -{discountInfo.discountPercent}%
+                      </div>
+                    )}
+                  </div>
+                  {/* Product Info for Tyre */}
+                  <div className={cn("mt-2 space-y-1", isUniformLayout && "flex flex-col flex-grow")}>
+                    <div className={cn(isUniformLayout && "flex-grow")}>
+                      {(product as Tyre).brandImageUrl && (
+                        <img 
+                          src={(product as Tyre).brandImageUrl!} 
+                          alt={`${product.brand} logo`}
+                          className="h-6 mx-auto mb-1" 
+                        />
+                      )}
+                      <h3 className={cn(
+                        "font-orbitron font-bold text-future-black text-sm leading-tight group-hover:text-electric-blue transition-colors line-clamp-2",
+                        isUniformLayout ? "min-h-[40px]" : "h-10"
+                      )}>
+                        {product.brand} {product.name}
+                      </h3>
+                      {isTyre && (
+                        <p className="text-xs text-gray-600 min-h-[16px]">{(product as Tyre).size}</p>
+                      )}
+                    </div>
+                    <div className="flex items-baseline justify-center gap-2">
+                      {discountInfo.hasDiscount && (
+                        <p className="text-xs text-gray-500 line-through">
+                          AED {discountInfo.originalPrice.toFixed(2)}
+                        </p>
+                      )}
+                      <p className={`text-sm font-bold ${discountInfo.hasDiscount ? 'text-red-600' : 'text-electric-blue'}`}>
+                        AED {product.price.toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              );
+
+              if (isUniformLayout) {
+                return <div className="group flex flex-col h-full">{tyreContent}</div>;
+              }
+              return (
+                <Link href={`/product/tyre/${product.id}`} className="block focus:outline-none focus:ring-2 focus:ring-electric-blue rounded-lg group">
+                  {tyreContent}
+                </Link>
+              );
+            })()
           ) : (
-            <img 
-              src={product.imageUrl || "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform"
-            />
+            onProductClick ? (
+              <div onClick={onProductClick} className="cursor-pointer block focus:outline-none focus:ring-2 focus:ring-electric-blue rounded-lg group h-full flex flex-col">
+                {/* Product Image for Accessory */}
+                <div className="relative h-40 flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-white group-hover:border-electric-blue transition-colors mb-2">
+                  <img 
+                    src={product.imageUrl || "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"}
+                    alt={product.name}
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
+                  />
+                  {/* Discount Badge for Accessories */}
+                  {discountInfo.hasDiscount && (
+                    <div className="absolute top-1 right-1 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs font-semibold">
+                      -{discountInfo.discountPercent}%
+                    </div>
+                  )}
+                </div>
+                {/* Product Info for Accessory */}
+                <div className="mt-2 space-y-1 flex flex-col flex-grow">
+                  <div className="flex-grow">
+                    <h3 className={cn(
+                      "font-orbitron font-bold text-future-black text-sm leading-tight group-hover:text-electric-blue transition-colors line-clamp-2",
+                      isUniformLayout ? "min-h-[40px]" : ""
+                    )}>
+                      {product.brand} {product.name}
+                    </h3>
+                    {'category' in product && (
+                      <p className="text-xs text-gray-600 line-clamp-1 min-h-[16px]">
+                        {product.material && `Material: ${product.material}`}
+                        {product.fitment && `, Fitment: ${product.fitment}`}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex items-baseline justify-center gap-2">
+                    {discountInfo.hasDiscount && (
+                      <p className="text-xs text-gray-500 line-through">
+                        AED {discountInfo.originalPrice.toFixed(2)}
+                      </p>
+                    )}
+                    <p className={`text-sm font-bold ${discountInfo.hasDiscount ? 'text-red-600' : 'text-electric-blue'}`}>
+                      AED {product.price.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link href={`/accessory/${product.id}`} className="block focus:outline-none focus:ring-2 focus:ring-electric-blue rounded-lg group h-full flex flex-col">
+                {/* Product Image for Accessory */}
+                <div className="relative h-40 flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-white group-hover:border-electric-blue transition-colors mb-2">
+                  <img 
+                    src={product.imageUrl || "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"}
+                    alt={product.name}
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
+                  />
+                  {/* Discount Badge for Accessories */}
+                  {discountInfo.hasDiscount && (
+                    <div className="absolute top-1 right-1 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs font-semibold">
+                      -{discountInfo.discountPercent}%
+                    </div>
+                  )}
+                </div>
+                {/* Product Info for Accessory */}
+                <div className="mt-2 space-y-1 flex flex-col flex-grow">
+                  <div className="flex-grow">
+                    <h3 className={cn(
+                      "font-orbitron font-bold text-future-black text-sm leading-tight group-hover:text-electric-blue transition-colors line-clamp-2",
+                      isUniformLayout ? "min-h-[40px]" : ""
+                    )}>
+                      {product.brand} {product.name}
+                    </h3>
+                    {'category' in product && (
+                      <p className="text-xs text-gray-600 line-clamp-1 min-h-[16px]">
+                        {product.material && `Material: ${product.material}`}
+                        {product.fitment && `, Fitment: ${product.fitment}`}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex items-baseline justify-center gap-2">
+                    {discountInfo.hasDiscount && (
+                      <p className="text-xs text-gray-500 line-through">
+                        AED {discountInfo.originalPrice.toFixed(2)}
+                      </p>
+                    )}
+                    <p className={`text-sm font-bold ${discountInfo.hasDiscount ? 'text-red-600' : 'text-electric-blue'}`}>
+                      AED {product.price.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            )
           )}
         </div>
         
-        {/* Product Info */}
-        <h3 className="font-orbitron font-bold text-future-black mb-2">
-          {product.brand} {product.name}
-        </h3>
-        
-        {'size' in product && (
-          <p className="text-sm text-gray-600 mb-2">{product.size}</p>
-        )}
-        
-        {'category' in product && (
-          <p className="text-sm text-gray-600 mb-3">
-            {product.material && `Material: ${product.material}`}
-            {product.fitment && `, Fitment: ${product.fitment}`}
-          </p>
-        )}
-        
-        <p className="text-xl font-bold text-electric-blue mb-3">
-          AED {product.price.toFixed(2)}
-        </p>
-        
-        {/* Stock Status */}
-        <Badge 
-          variant={isOutOfStock ? "destructive" : "default"}
-          className={`mb-4 ${isOutOfStock ? "bg-red-500" : "bg-green-500"}`}
-        >
-          {isOutOfStock ? "Out of Stock" : "In Stock"}
-        </Badge>
-        
-        {/* Action Buttons */}
-        <div className="space-y-2">
-          {type === "tyre" ? (
-            <Button 
-              className="w-full bg-electric-blue hover:bg-electric-blue-dark" 
-              onClick={handleAddToCart}
-              disabled={isOutOfStock}
-            >
-              {isOutOfStock ? "Out of Stock" : "Add to Cart"}
-            </Button>
-          ) : (
-            <>
-              <Link href={`/product/${type}/${product.id}`}>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white"
-                >
-                  View Details
-                </Button>
-              </Link>
-              <Button 
-                className="w-full bg-electric-blue hover:bg-electric-blue-dark" 
-                onClick={handleAddToCart}
-                disabled={isOutOfStock}
-              >
-                {isOutOfStock ? "Out of Stock" : "Add to Cart"}
-              </Button>
-            </>
-          )}
+        {/* Bottom Section */}
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <Badge 
+            variant={isOutOfStock ? "destructive" : "default"}
+            className={`text-xs py-0.5 ${isOutOfStock ? "bg-red-500" : "bg-green-500"}`}
+          >
+            {isOutOfStock ? "Out of Stock" : "In Stock"}
+          </Badge>
+          
+          <Button 
+            size="sm"
+            variant="default"
+            className="bg-electric-blue hover:bg-electric-blue-dark text-xs py-1 h-auto" 
+            onClick={handleAddToCart}
+            disabled={isOutOfStock}
+          >
+            {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+          </Button>
         </div>
       </CardContent>
     </Card>

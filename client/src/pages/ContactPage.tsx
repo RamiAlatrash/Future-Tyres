@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -23,6 +23,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const { toast } = useToast();
 
   const form = useForm<ContactFormData>({
@@ -58,51 +59,16 @@ export default function ContactPage() {
   };
 
   const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Address",
-      content: "Sheikh Zayed Road, Dubai, UAE",
-      description: "Visit our main showroom"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      content: "+971 4 123 4567",
-      description: "Call us for immediate assistance"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "info@futuretyretrading.ae",
-      description: "Send us an email anytime"
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      content: "Mon-Fri: 8AM-8PM",
-      description: "Sat: 8AM-6PM, Sun: 10AM-4PM"
-    }
+    { icon: MapPin, title: t('contact.address.title'), content: t('contact.address.content'), description: t('contact.address.desc') },
+    { icon: Phone, title: t('contact.phone.title'), content: t('contact.phone.content'), description: t('contact.phone.desc') },
+    { icon: Mail, title: t('contact.email.title'), content: t('contact.email.content'), description: t('contact.email.desc') },
+    { icon: Clock, title: t('contact.hours.title'), content: t('contact.hours.content'), description: t('contact.hours.desc') }
   ];
 
   const locations = [
-    {
-      name: "Dubai Main Branch",
-      address: "Sheikh Zayed Road, Dubai",
-      phone: "+971 4 123 4567",
-      hours: "Mon-Sun: 8AM-8PM"
-    },
-    {
-      name: "Abu Dhabi Branch",
-      address: "Khalifa Street, Abu Dhabi",
-      phone: "+971 2 234 5678",
-      hours: "Mon-Sun: 8AM-8PM"
-    },
-    {
-      name: "Sharjah Branch",
-      address: "Industrial Area, Sharjah",
-      phone: "+971 6 345 6789",
-      hours: "Mon-Sat: 8AM-7PM"
-    }
+    { name: t('contact.locations.dubai'), address: "Sheikh Zayed Road, Dubai", phone: "+971 4 123 4567", hours: "Mon-Sun: 8AM-8PM" },
+    { name: t('contact.locations.abudhabi'), address: "Khalifa Street, Abu Dhabi", phone: "+971 2 234 5678", hours: "Mon-Sun: 8AM-8PM" },
+    { name: t('contact.locations.sharjah'), address: "Industrial Area, Sharjah", phone: "+971 6 345 6789", hours: "Mon-Sat: 8AM-7PM" }
   ];
 
   return (
@@ -110,22 +76,16 @@ export default function ContactPage() {
       {/* Breadcrumb */}
       <Breadcrumb className="mb-6">
         <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
+          <BreadcrumbItem><BreadcrumbLink href="/">{t('nav.home')}</BreadcrumbLink></BreadcrumbItem>
           <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Contact</BreadcrumbPage>
-          </BreadcrumbItem>
+          <BreadcrumbItem><BreadcrumbPage>{t('nav.contact')}</BreadcrumbPage></BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
       {/* Page Header */}
       <div className="text-center mb-12">
-        <h1 className="font-orbitron text-4xl font-bold text-future-black mb-4">Contact Us</h1>
-        <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-          Get in touch with our automotive experts for any questions about tyres, accessories, or services
-        </p>
+        <h1 className="font-orbitron text-4xl font-bold text-future-black mb-4">{t('contact.title')}</h1>
+        <p className="text-gray-600 text-xl max-w-3xl mx-auto">{t('contact.subtitle')}</p>
       </div>
 
       {/* Contact Info Cards */}
@@ -149,7 +109,7 @@ export default function ContactPage() {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle className="font-orbitron text-2xl">Send us a Message</CardTitle>
+              <CardTitle className="font-orbitron text-2xl">{t('contact.form.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -160,9 +120,9 @@ export default function ContactPage() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name</FormLabel>
+                          <FormLabel>{t('contact.form.name')}</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your name" {...field} />
+                            <Input placeholder={t('contact.form.name.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -174,9 +134,9 @@ export default function ContactPage() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>{t('contact.form.email')}</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="your@email.com" {...field} />
+                            <Input type="email" placeholder={t('contact.form.email.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -189,9 +149,9 @@ export default function ContactPage() {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>{t('contact.form.subject')}</FormLabel>
                         <FormControl>
-                          <Input placeholder="What can we help you with?" {...field} />
+                          <Input placeholder={t('contact.form.subject.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -203,10 +163,10 @@ export default function ContactPage() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>{t('contact.form.message')}</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Please describe your inquiry in detail..."
+                            placeholder={t('contact.form.message.placeholder')}
                             rows={6}
                             {...field}
                           />
@@ -222,7 +182,7 @@ export default function ContactPage() {
                     className="w-full bg-electric-blue hover:bg-electric-blue-dark"
                     disabled={sendMessageMutation.isPending}
                   >
-                    {sendMessageMutation.isPending ? "Sending..." : "Send Message"}
+                    {sendMessageMutation.isPending ? t('contact.form.button.sending') : t('contact.form.button')}
                   </Button>
                 </form>
               </Form>
@@ -232,23 +192,10 @@ export default function ContactPage() {
 
         {/* Map and Locations */}
         <div className="space-y-8">
-          {/* Interactive Map Placeholder */}
-          <Card>
-            <CardContent className="p-0">
-              <div className="h-64 bg-gradient-to-br from-electric-blue to-electric-blue-dark flex items-center justify-center text-white rounded-lg">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 mx-auto mb-4" />
-                  <h3 className="text-xl font-orbitron font-bold mb-2">Interactive Map</h3>
-                  <p className="text-sm opacity-75">Click markers for location details</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Our Locations */}
           <Card>
             <CardHeader>
-              <CardTitle className="font-orbitron">Our Locations</CardTitle>
+              <CardTitle className="font-orbitron">{t('contact.locations.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
@@ -273,46 +220,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Fitment Services */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-orbitron">Fitment Services</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center mt-1">
-                    <MapPin className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Partner Fitment Centers</h4>
-                    <p className="text-sm text-gray-600">Professional installation at our partner locations across UAE</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center mt-1">
-                    <Phone className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Home Service</h4>
-                    <p className="text-sm text-gray-600">We come to you! AED 50 delivery and installation fee</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center mt-1">
-                    <Mail className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Mobile Van Service</h4>
-                    <p className="text-sm text-gray-600">Full-service mobile workshop (Dubai only) - AED 80</p>
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>

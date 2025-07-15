@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Order Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class='bx bxs-dashboard'></i><span class="links_name">Dashboard</span></a></li>
+            <li><a href="orders.html" class="active"><i class='bx bx-box'></i><span class="links_name">Orders</span></a></li>
+            <li><a href="products.html"><i class='bx bx-list-ul'></i><span class="links_name">Products</span></a></li>
+            <li><a href="inventory.html"><i class='bx bx-coin-stack'></i><span class="links_name">Inventory</span></a></li>
+            <li><a href="customers.html"><i class='bx bx-user'></i><span class="links_name">Customers</span></a></li>
+            <li><a href="analytics.html"><i class='bx bx-pie-chart-alt-2'></i><span class="links_name">Analytics</span></a></li>
+            <li><a href="reports.html"><i class='bx bx-file'></i><span class="links_name">Reports</span></a></li>
+            <li><a href="settings.html"><i class='bx bx-cog'></i><span class="links_name">Settings</span></a></li>
+        </ul>
+    </div>
+
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Order Details</span>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <div class="home-content">
+            <div class="order-details-header">
+                <h1 id="order-id-header"></h1>
+                <div class="order-actions">
+                    <button class="btn btn-secondary">Print</button>
+                    <button class="btn">More actions <i class='bx bx-chevron-down'></i></button>
+                </div>
+            </div>
+
+            <div class="order-details-container">
+                <div class="order-main-content">
+                    <div class="box order-status-card">
+                        <div class="card-header">
+                            <h4>Status: <span id="order-status-badge" class="status"></span></h4>
+                        </div>
+                        <div id="tracking-info" class="card-content">
+                            <!-- Tracking info will be populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="box order-items-card">
+                        <div class="card-header"><h4>Items</h4></div>
+                        <table class="items-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>SKU</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items-tbody">
+                                <!-- Items will be populated by JS -->
+                            </tbody>
+                        </table>
+                        <div class="order-summary">
+                            <p>Subtotal: <span id="subtotal"></span></p>
+                            <p>Shipping: <span id="shipping"></span></p>
+                            <p><strong>Total:</strong> <strong id="total"></strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="box order-timeline-card">
+                        <div class="card-header"><h4>Timeline</h4></div>
+                        <div class="timeline" id="order-timeline">
+                            <!-- Timeline events will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-sidebar-content">
+                    <div class="box customer-info-card">
+                        <div class="card-header"><h4>Customer</h4></div>
+                        <div class="card-content">
+                            <p id="customer-name"></p>
+                            <p id="customer-email"></p>
+                            <p id="customer-phone"></p>
+                        </div>
+                    </div>
+                    <div class="box address-card">
+                        <div class="card-header"><h4>Shipping Address</h4></div>
+                        <div id="shipping-address" class="card-content"></div>
+                    </div>
+                    <div class="box address-card">
+                        <div class="card-header"><h4>Billing Address</h4></div>
+                        <div id="billing-address" class="card-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="order-details.js"></script>
+</body>
+</html> 

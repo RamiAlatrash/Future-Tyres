@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.html">
+                    <i class='bx bx-coin-stack'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html" class="active">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class='bx bx-file'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <!-- Top Bar -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Analytics</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search analytics...">
+                <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <!-- Analytics Content -->
+        <div class="home-content">
+            <div class="analytics-grid">
+                <div class="box">
+                    <div class="title">Order Status Distribution</div>
+                    <canvas id="analyticsOrderStatusChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Revenue by Product Category</div>
+                    <canvas id="revenueByCategoryChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Sales by Payment Method</div>
+                    <canvas id="salesByPaymentMethodChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Customer Type Breakdown</div>
+                    <canvas id="customerTypeChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Inventory Stock Levels</div>
+                    <canvas id="inventoryLevelsChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Revenue by Region</div>
+                    <canvas id="revenueByRegionChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Expenses Breakdown</div>
+                    <canvas id="expensesChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Product Sales Share</div>
+                    <canvas id="productSalesShareChart"></canvas>
+                </div>
+                 <div class="box">
+                    <div class="title">Returns by Reason</div>
+                    <canvas id="returnsByReasonChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

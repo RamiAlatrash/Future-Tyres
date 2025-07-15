@@ -1,8 +1,10 @@
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
+import { useLocation } from "wouter";
 
 export default function ShoppingCart() {
+  const [, setLocation] = useLocation();
   const { 
     isCartOpen, 
     toggleCart, 
@@ -98,7 +100,13 @@ export default function ShoppingCart() {
                 <span className="text-electric-blue">AED {getTotal().toFixed(2)}</span>
               </div>
             </div>
-            <Button className="w-full bg-electric-blue hover:bg-electric-blue-dark mb-3">
+            <Button 
+              className="w-full bg-electric-blue hover:bg-electric-blue-dark mb-3"
+              onClick={() => {
+                toggleCart();
+                setLocation('/cart');
+              }}
+            >
               Proceed to Checkout
             </Button>
             <Button 

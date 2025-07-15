@@ -1,8 +1,18 @@
-import { 
-  users, tyres, accessories, cartItems, reviews, contactMessages, newsletterSubscribers,
-  type User, type InsertUser, type Tyre, type InsertTyre, type Accessory, type InsertAccessory,
-  type CartItem, type InsertCartItem, type Review, type InsertReview,
-  type ContactMessage, type InsertContactMessage, type NewsletterSubscriber, type InsertNewsletterSubscriber
+import {
+    type Accessory,
+    type CartItem,
+    type ContactMessage,
+    type InsertAccessory,
+    type InsertCartItem,
+    type InsertContactMessage,
+    type InsertNewsletterSubscriber,
+    type InsertReview,
+    type InsertTyre,
+    type InsertUser,
+    type NewsletterSubscriber,
+    type Review,
+    type Tyre,
+    type User
 } from "@shared/schema";
 
 export interface IStorage {
@@ -126,6 +136,125 @@ export class MemStorage implements IStorage {
           sidewall: "Black sidewall",
           warranty: "80,000 km"
         })
+      },
+      {
+        name: "Eagle F1 Asymmetric 5",
+        brand: "Goodyear",
+        size: "235/40 R18",
+        price: 450,
+        stock: 12,
+        type: "Summer",
+        loadIndex: "95Y",
+        speedRating: "Y",
+        description: "Ultra high-performance summer tyre offering superb grip and handling.",
+        imageUrl: "https://images.unsplash.com/photo-1621293044902-c220a8804iba?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "35,000 km"
+        })
+      },
+      {
+        name: "P Zero",
+        brand: "Pirelli",
+        size: "245/35 R20",
+        price: 620,
+        stock: 7,
+        type: "Summer",
+        loadIndex: "95Y",
+        speedRating: "Y",
+        description: "The iconic P ZERO™ is the point of reference for the ultra high performance segment.",
+        imageUrl: "https://images.unsplash.com/photo-1599548403346-38d8b3ea4a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "30,000 km"
+        })
+      },
+      {
+        name: "WeatherGrip",
+        brand: "Bridgestone",
+        size: "215/60 R16",
+        price: 320,
+        stock: 20,
+        type: "All-Season",
+        loadIndex: "95H",
+        speedRating: "H",
+        description: "A reliable all-season tyre for confident wet performance.",
+        imageUrl: "https://images.unsplash.com/photo-1619452354813-a7657a04911b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "105,000 km"
+        })
+      },
+      {
+        name: "Assurance WeatherReady",
+        brand: "Goodyear",
+        size: "195/65 R15",
+        price: 290,
+        stock: 25,
+        type: "All-Season",
+        loadIndex: "91H",
+        speedRating: "H",
+        description: "Our best all-weather traction, for Mother Nature's worst.",
+        imageUrl: "https://images.unsplash.com/photo-1607582278337-3674e34a3666?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "95,000 km"
+        })
+      },
+      {
+        name: "Cinturato P7 All Season",
+        brand: "Pirelli",
+        size: "225/50 R17",
+        price: 390,
+        stock: 18,
+        type: "All-Season",
+        loadIndex: "94V",
+        speedRating: "V",
+        description: "The high performance All Season tyre for cars and crossovers.",
+        imageUrl: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "110,000 km"
+        })
+      },
+      {
+        name: "Blizzak WS90",
+        brand: "Bridgestone",
+        size: "215/55 R17",
+        price: 350,
+        stock: 14,
+        type: "Winter",
+        loadIndex: "94H",
+        speedRating: "H",
+        description: "Confident stopping power on ice for cars and minivans.",
+        imageUrl: "https://images.unsplash.com/photo-1614162192795-445771c7c5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "N/A"
+        })
+      },
+      {
+        name: "WinterContact SI",
+        brand: "Continental",
+        size: "205/60 R16",
+        price: 330,
+        stock: 10,
+        type: "Winter",
+        loadIndex: "92H",
+        speedRating: "H",
+        description: "Excellent grip in cold conditions, plus enhanced traction in snow.",
+        imageUrl: "https://images.unsplash.com/photo-1517581177682-a085bb7ffb73?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+        specifications: JSON.stringify({
+          construction: "Radial",
+          sidewall: "Black sidewall",
+          warranty: "N/A"
+        })
       }
     ];
 
@@ -207,7 +336,16 @@ export class MemStorage implements IStorage {
 
   async createTyre(insertTyre: InsertTyre): Promise<Tyre> {
     const id = this.currentId++;
-    const tyre: Tyre = { ...insertTyre, id };
+    const tyre: Tyre = {
+      stock: 0,
+      loadIndex: null,
+      speedRating: null,
+      description: null,
+      imageUrl: null,
+      specifications: null,
+      ...insertTyre,
+      id,
+    };
     this.tyres.set(id, tyre);
     return tyre;
   }
@@ -260,7 +398,17 @@ export class MemStorage implements IStorage {
 
   async createAccessory(insertAccessory: InsertAccessory): Promise<Accessory> {
     const id = this.currentId++;
-    const accessory: Accessory = { ...insertAccessory, id };
+    const accessory: Accessory = {
+      stock: 0,
+      description: null,
+      imageUrl: null,
+      specifications: null,
+      material: null,
+      fitment: null,
+      warranty: null,
+      ...insertAccessory,
+      id,
+    };
     this.accessories.set(id, accessory);
     return accessory;
   }
@@ -305,7 +453,12 @@ export class MemStorage implements IStorage {
 
   async addToCart(insertItem: InsertCartItem): Promise<CartItem> {
     const id = this.currentId++;
-    const item: CartItem = { ...insertItem, id };
+    const item: CartItem = {
+      quantity: 1,
+      fitmentOption: null,
+      ...insertItem,
+      id,
+    };
     this.cartItems.set(id, item);
     return item;
   }
@@ -345,11 +498,13 @@ export class MemStorage implements IStorage {
 
   async createReview(insertReview: InsertReview): Promise<Review> {
     const id = this.currentId++;
-    const review: Review = { 
-      ...insertReview, 
-      id, 
+    const review: Review = {
+      productId: null,
+      productType: null,
+      ...insertReview,
+      id,
       createdAt: new Date(),
-      isApproved: false // Reviews need approval
+      isApproved: false, // Reviews need approval
     };
     this.reviews.set(id, review);
     return review;

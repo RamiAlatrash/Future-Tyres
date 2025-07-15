@@ -1,0 +1,21 @@
+export const categoryHierarchy = {
+    "All Products": [
+        "Sale",
+        "Brakes",
+        "Suspension",
+        "Exterior",
+        "Interior",
+        "Rims and Tires",
+        "Lighting",
+        "Winches",
+        "Camping",
+    ],
+    "Brakes": ["Pads", "Rotors", "Calipers", "Brake Lines"],
+    "Suspension": ["Suspension Systems", "Lift Kits", "Shocks", "Suspension Components"],
+    "Exterior": ["Front Bumpers", "Steps, Sliders and Skid Plates", "Rear Bumpers and Tire Carriers", "Hoods and Accessories", "Tops and Doors", "Fenders", "Styling", "Cargo"],
+    "Interior": ["Floor Mats", "Styling", "Cargo"],
+    "Rims and Tires": ["Rims", "Tires", "Spacers and Accessories"],
+    "Lighting": ["Headlights, Taillights and Fog Lights", "Auxiliary Lights", "Light Mounts", "Utility Lights", "Switch Pods and Switches", "Light Bars", "Styling Lights", "Warning Lights & Accessories"],
+    "Winches": ["Off-Road Winches", "Winch Accessories"],
+    "Camping": ["Awnings", "Tents"],
+}; 

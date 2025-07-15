@@ -1,20 +1,24 @@
-import { Link, useLocation } from "wouter";
-import { ShoppingCart, Menu, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
+import { Menu, ShoppingCart, User } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "wouter";
+import { useLanguage } from '../contexts/LanguageContext';
+import { LanguageSelector } from './LanguageSelector';
 
 export default function Header() {
   const [location] = useLocation();
-  const { getTotalItems, toggleCart } = useCart();
+  const { totalItems } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, setLanguage } = useLanguage();
   
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Tyres", href: "/tyres" },
-    { name: "Accessories", href: "/accessories" },
-    { name: "Reviews", href: "/reviews" },
-    { name: "Contact", href: "/contact" },
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.tyres'), href: "/tyres" },
+    { name: t('nav.accessories'), href: "/accessories" },
+    // Sale button will be inserted here
+    { name: t('nav.reviews'), href: "/reviews" },
+    { name: t('nav.contact'), href: "/contact" },
   ];
 
   const isActive = (href: string) => {
@@ -23,11 +27,16 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-future-black text-white h-20 fixed w-full z-50 shadow-lg">
+    <header className="bg-sky-800 text-white h-20 fixed w-full z-50 shadow-lg">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
+            <img 
+              src="/FutureLogo.png" 
+              alt="Future Tyres Logo" 
+              className="h-12 w-auto"
+            />
             <div 
               className="logo-glitch font-orbitron text-xl font-bold" 
               data-text="FUTURE TYRE TRADING"
@@ -38,47 +47,67 @@ export default function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          {navigation.map((item) => (
-            <Link key={item.name} href={item.href}>
-              <span 
-                className={`hover:text-electric-blue border-b-2 border-transparent hover:border-electric-blue pb-1 cursor-pointer ${
-                  isActive(item.href) ? "text-electric-blue border-electric-blue" : ""
-                }`}
-              >
-                {item.name}
-              </span>
-            </Link>
+        <nav className="hidden lg:flex items-center gap-x-8">
+          {navigation.map((item, idx) => (
+            <>
+              <Link key={item.name} href={item.href}>
+                <span 
+                  className={`hover:text-sky-200 border-b-2 border-transparent hover:border-sky-200 pb-1 cursor-pointer ${
+                    isActive(item.href) ? "text-sky-200 border-sky-200" : ""
+                  }`}
+                >
+                  {item.name}
+                </span>
+              </Link>
+              {/* Insert Sale link after Accessories */}
+              {item.name === t('nav.accessories') && (
+                <Link href="/deals">
+                  <span
+                    className="font-bold text-rose-500 hover:text-rose-600 border-b-2 border-transparent hover:border-rose-600 pb-1 cursor-pointer transition"
+                    style={{ minWidth: '90px' }}
+                  >
+                    Sale
+                  </span>
+                </Link>
+              )}
+            </>
           ))}
         </nav>
         
-        {/* Auth & Cart */}
-        <div className="flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            className="hidden lg:inline-flex text-white hover:text-electric-blue"
-          >
-            <User className="w-4 h-4 mr-2" />
-            Login
-          </Button>
+        {/* Auth, Language & Cart */}
+        <div className="flex items-center gap-x-4">
+          <Link href="/login">
+            <Button 
+              variant="ghost" 
+              className="hidden lg:inline-flex text-white hover:text-sky-200"
+            >
+              <User className="w-4 h-4 mr-2" />
+              {t('nav.login')}
+            </Button>
+          </Link>
           
-          <Button
-            variant="ghost"
-            className="relative p-2 hover:text-electric-blue"
-            onClick={toggleCart}
-          >
+          <div className="hidden lg:block">
+            <LanguageSelector onLanguageChange={setLanguage} />
+          </div>
+          
+          <Link href="/cart">
+            <Button
+              variant="ghost"
+              className="relative p-2 hover:text-sky-200 text-white"
+            >
             <ShoppingCart className="w-6 h-6" />
-            {getTotalItems() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-electric-blue text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {getTotalItems()}
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 bg-sky-700 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {totalItems}
               </span>
             )}
-          </Button>
+            </Button>
+          </Link>
           
           {/* Mobile menu button */}
           <Button
             variant="ghost"
-            className="lg:hidden p-2 hover:text-electric-blue"
+            className="lg:hidden p-2 hover:text-sky-200 text-white"
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <Menu className="w-6 h-6" />
@@ -97,10 +126,10 @@ export default function Header() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 border-b">
-              <span className="font-orbitron text-xl font-bold text-future-black">Menu</span>
+              <span className="font-orbitron text-xl font-bold text-sky-800">Menu</span>
               <Button
                 variant="ghost"
-                className="p-2 text-future-black"
+                className="p-2 text-sky-800"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 ×
@@ -110,7 +139,7 @@ export default function Header() {
               {navigation.map((item) => (
                 <Link key={item.name} href={item.href}>
                   <div 
-                    className="block text-lg text-future-black hover:text-electric-blue cursor-pointer"
+                    className="block text-lg text-sky-800 hover:text-sky-600 cursor-pointer"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -118,12 +147,14 @@ export default function Header() {
                 </Link>
               ))}
               <div className="border-t pt-6 space-y-4">
-                <Button className="block text-lg text-future-black hover:text-electric-blue w-full text-left">
-                  Login
-                </Button>
-                <Button className="block text-lg text-future-black hover:text-electric-blue w-full text-left">
-                  Register
-                </Button>
+                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-lg text-sky-800 hover:text-sky-600">
+                    {t('nav.login')}
+                  </Button>
+                </Link>
+                <div className="px-4">
+                  <LanguageSelector onLanguageChange={setLanguage} />
+                </div>
               </div>
             </nav>
           </div>

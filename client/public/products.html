@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Tyres - Products</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="Future-logo.jpg" alt="Future Tyres Logo" style="width: 40px; margin-right: 10px;">
+            <span class="logo_name">Future Tyres</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html" class="active">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.html">
+                    <i class='bx bx-coin-stack'></i>
+                    <span class="links_name">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="customers.html">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class='bx bx-file'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <section class="home-section">
+        <!-- Top Bar -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Products</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search products...">
+                <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+                <i class='bx bx-bell'></i>
+                <span class="admin_name">Admin</span>
+            </div>
+        </nav>
+
+        <!-- Products Content -->
+        <div class="home-content">
+            <!-- Summary Cards -->
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Products</div>
+                        <div class="number">256</div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Inventory Value</div>
+                        <div class="number">$1,250,340</div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Low Stock Items</div>
+                        <div class="number">12</div>
+                    </div>
+                </div>
+                <div class="box">
+                     <div class="right-side">
+                        <div class="box-topic">Categories</div>
+                        <div class="number">8</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-container box">
+                 <div class="title-container">
+                    <div class="title">All Products</div>
+                    <div>
+                        <input type="text" id="categoryFilterInput" placeholder="Filter by category..." style="margin-right: 10px; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+                        <button class="btn" id="openImportModalBtn">Import Products</button>
+                        <button class="btn" id="openAddProductModalBtn">Add Product</button>
+                    </div>
+                </div>
+                <div class="table-responsive-wrapper">
+                    <table class="products-table">
+                        <thead>
+                           <tr>
+                               <th>Name</th>
+                               <th>Description</th>
+                               <th>Category</th>
+                               <th>Location</th>
+                               <th>SKU</th>
+                               <th>Stock</th>
+                               <th>Price</th>
+                               <th>Status</th>
+                               <th>Images</th>
+                               <th>Actions</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                               <td>Michelin Primacy 4</td>
+                               <td>High-performance summer tyre.</td>
+                               <td>Summer</td>
+                               <td>Al Quoz</td>
+                               <td>MICH-P4-205</td>
+                               <td>150</td>
+                               <td>$150.00</td>
+                               <td><span class="status active">Active</span></td>
+                               <td>5</td>
+                               <td>
+                                   <button class="action-btn edit"><i class='bx bx-edit'></i></button>
+                                   <button class="action-btn delete"><i class='bx bx-trash'></i></button>
+                               </td>
+                           </tr>
+                            <tr>
+                               <td>Goodyear Eagle F1</td>
+                               <td>Ultra-high performance summer tyre.</td>
+                               <td>Summer</td>
+                               <td>Deira</td>
+                               <td>GDYR-EF1-225</td>
+                               <td>80</td>
+                               <td>$180.00</td>
+                               <td><span class="status active">Active</span></td>
+                               <td>4</td>
+                                <td>
+                                   <button class="action-btn edit"><i class='bx bx-edit'></i></button>
+                                   <button class="action-btn delete"><i class='bx bx-trash'></i></button>
+                               </td>
+                           </tr>
+                            <tr>
+                               <td>Bridgestone Turanza</td>
+                               <td>Reliable all-season touring tyre.</td>
+                               <td>All-Season</td>
+                               <td>Sharjah</td>
+                               <td>BRDG-T-195</td>
+                               <td>20</td>
+                               <td>$120.00</td>
+                               <td><span class="status inactive">Inactive</span></td>
+                               <td>3</td>
+                                <td>
+                                   <button class="action-btn edit"><i class='bx bx-edit'></i></button>
+                                   <button class="action-btn delete"><i class='bx bx-trash'></i></button>
+                               </td>
+                           </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <input type="text" id="productCategory" required>
+                </div>
+                <div class="form-group">
+                    <label for="productLocation">Location</label>
+                    <select id="productLocation" required>
+                        <option value="Al Quoz">Al Quoz</option>
+                        <option value="Deira">Deira</option>
+                        <option value="Sharjah">Sharjah</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productSku">SKU</label>
+                    <input type="text" id="productSku" required>
+                </div>
+                <div class="form-group">
+                    <label for="productStock">Stock</label>
+                    <input type="number" id="productStock" required>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price</label>
+                    <input type="number" id="productPrice" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="productStatus">Status</label>
+                    <select id="productStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productImages">Image URL</label>
+                    <input type="text" id="productImages" placeholder="http://example.com/image.png">
+                </div>
+                <button type="submit" class="btn">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div id="importModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Import Products from CSV</h2>
+            <div class="form-group">
+                <label for="csvFile">Choose CSV file</label>
+                <input type="file" id="csvFile" accept=".csv">
+                <p class="input-hint">
+                    Required format: <strong>Name, Description, Category, Location, SKU, Stock, Price, Status</strong>
+                </p>
+            </div>
+            <button id="uploadCsvBtn" class="btn">Upload and Process</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

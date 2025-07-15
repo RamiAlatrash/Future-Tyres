@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Tyre, Accessory } from "@shared/schema";
+import { Accessory, Tyre } from "@shared/schema";
+import { ReactNode, createContext, createElement, useContext, useEffect, useState } from "react";
 
 interface CartItem {
   id: string;
@@ -11,14 +11,33 @@ interface CartItem {
   imageUrl?: string;
   size?: string;
   category?: string;
-  fitmentOption?: 'partner' | 'home' | 'mobile';
+  fitmentOption?: 'partner' | 'home' | 'no';
+  brand: string;
 }
 
-export function useCart() {
+interface CartContextType {
+  cartItems: CartItem[];
+  isCartOpen: boolean;
+  isFitmentActive: boolean;
+  addToCart: (product: (Tyre | Accessory) & { quantity?: number }, productType: 'tyre' | 'accessory', fitmentOption?: string) => void;
+  removeFromCart: (itemId: string) => void;
+  updateQuantity: (itemId: string, quantity: number) => void;
+  setGlobalFitmentOption: (wantsFitment: boolean) => void;
+  clearCart: () => void;
+  toggleCart: () => void;
+  totalItems: number;
+  getSubtotal: () => number;
+  getFitmentFee: () => number;
+  getVAT: () => number;
+  getTotal: () => number;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -26,12 +45,11 @@ export function useCart() {
     }
   }, []);
 
-  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product: Tyre | Accessory, productType: 'tyre' | 'accessory', fitmentOption?: string) => {
+  const addToCart = (product: (Tyre | Accessory) & { quantity?: number }, productType: 'tyre' | 'accessory', fitmentOption?: string) => {
     const existingItem = cartItems.find(
       item => item.productId === product.id && item.productType === productType
     );
@@ -40,18 +58,21 @@ export function useCart() {
       setCartItems(items =>
         items.map(item =>
           item.id === existingItem.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + (product.quantity || 1) }
             : item
         )
       );
     } else {
+      const newItemId = `${productType}-${product.id}-${Date.now()}`;
+      
       const newItem: CartItem = {
-        id: `${productType}-${product.id}`,
+        id: newItemId,
         productId: product.id,
         productType,
         name: product.name,
+        brand: product.brand,
         price: product.price,
-        quantity: 1,
+        quantity: product.quantity || 1,
         imageUrl: product.imageUrl || undefined,
         size: 'size' in product ? product.size : undefined,
         category: 'category' in product ? product.category : undefined,
@@ -59,7 +80,6 @@ export function useCart() {
       };
       setCartItems(items => [...items, newItem]);
     }
-    setIsCartOpen(true);
   };
 
   const removeFromCart = (itemId: string) => {
@@ -83,21 +103,33 @@ export function useCart() {
     setCartItems([]);
   };
 
+  const setGlobalFitmentOption = (wantsFitment: boolean) => {
+    setCartItems(items =>
+      items.map(item => {
+        if (item.productType === 'tyre' || item.productType === 'accessory') {
+          return { ...item, fitmentOption: wantsFitment ? 'partner' : 'no' };
+        }
+        return item;
+      })
+    );
+  };
+
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
 
-  const getTotalItems = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  };
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const getSubtotal = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
+  const isFitmentActive = cartItems.some(
+    item => (item.productType === 'tyre' || item.productType === 'accessory') && item.fitmentOption && item.fitmentOption !== 'no'
+  );
+
   const getFitmentFee = () => {
-    const hasTyres = cartItems.some(item => item.productType === 'tyre');
-    return hasTyres ? 50 : 0;
+    return isFitmentActive ? 50 : 0;
   };
 
   const getVAT = () => {
@@ -110,18 +142,30 @@ export function useCart() {
     return getSubtotal() + getFitmentFee() + getVAT();
   };
 
-  return {
+  const value = {
     cartItems,
     isCartOpen,
+    isFitmentActive,
     addToCart,
     removeFromCart,
     updateQuantity,
+    setGlobalFitmentOption,
     clearCart,
     toggleCart,
-    getTotalItems,
+    totalItems,
     getSubtotal,
     getFitmentFee,
     getVAT,
     getTotal,
   };
+
+    return createElement(CartContext.Provider, { value }, children);
+}
+
+export function useCart() {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
 }
